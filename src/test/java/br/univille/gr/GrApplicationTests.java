@@ -1,4 +1,4 @@
-package br.univille.gr.gr;
+package br.univille.gr;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
