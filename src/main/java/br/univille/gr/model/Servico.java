@@ -8,11 +8,24 @@ public class Servico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(length = 8000)
+    @Column(columnDefinition = "TEXT")
     private String descricao;
     private String tempoGasto;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
+
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    private TipoServico tipoServico;
+
+    public TipoServico getTipoServico() {
+        return tipoServico;
+    }
+
+    public void setTipoServico(TipoServico tipoServico) {
+        this.tipoServico = tipoServico;
+    }
 
     public long getId() {
         return id;

@@ -1,10 +1,9 @@
 package br.univille.gr.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class OrdemServico {
@@ -19,6 +18,9 @@ public class OrdemServico {
     private char status;
     private Date criacao;
     private Date alteracao;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Produto> produtos = new ArrayList<Produto>();
 
     public long getId() {
         return id;
