@@ -1,10 +1,9 @@
 package br.univille.gr.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Agenda {
@@ -17,6 +16,13 @@ public class Agenda {
     private char status;
     private Date criacao;
     private Date alteracao;
+
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    private Endereco endereco;
+
+    @OneToMany(cascade = { CascadeType.ALL })
+    @JoinColumn(name="agenda_id")
+    private List<Mensagem> mensagem = new ArrayList<Mensagem>();
 
     public long getId() {
         return id;
@@ -72,5 +78,21 @@ public class Agenda {
 
     public void setAlteracao(Date alteracao) {
         this.alteracao = alteracao;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public List<Mensagem> getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(List<Mensagem> mensagem) {
+        this.mensagem = mensagem;
     }
 }

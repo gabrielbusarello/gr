@@ -1,9 +1,6 @@
 package br.univille.gr.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -15,6 +12,9 @@ public class Avaliacao {
     private String observacao;
     private char tipo;
     private Date criacao;
+
+    @OneToOne(cascade= { CascadeType.PERSIST }, optional = false)
+    private OrdemServico ordemServico;
 
     public long getId() {
         return id;
@@ -54,5 +54,13 @@ public class Avaliacao {
 
     public void setCriacao(Date criacao) {
         this.criacao = criacao;
+    }
+
+    public OrdemServico getOrdemServico() {
+        return ordemServico;
+    }
+
+    public void setOrdemServico(OrdemServico ordemServico) {
+        this.ordemServico = ordemServico;
     }
 }

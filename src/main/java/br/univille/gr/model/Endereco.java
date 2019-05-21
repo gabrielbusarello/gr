@@ -1,9 +1,6 @@
 package br.univille.gr.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -20,6 +17,9 @@ public class Endereco {
     private String estado;
     private Date criacao;
     private Date alteracao;
+
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    private Usuario usuario;
 
     public long getId() {
         return id;
@@ -99,5 +99,13 @@ public class Endereco {
 
     public void setAlteracao(Date alteracao) {
         this.alteracao = alteracao;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

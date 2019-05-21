@@ -19,8 +19,12 @@ public class OrdemServico {
     private Date criacao;
     private Date alteracao;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Produto> produtos = new ArrayList<Produto>();
+    @OneToOne(cascade= { CascadeType.PERSIST }, optional = false)
+    private Agenda agenda;
+
+    @OneToMany(cascade = { CascadeType.ALL })
+    @JoinColumn(name="ordem_servico_id")
+    private List<Produto> produto = new ArrayList<Produto>();
 
     public long getId() {
         return id;
