@@ -18,6 +18,9 @@ public class Agenda {
     private Date alteracao;
 
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    private Usuario usuario;
+
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Endereco endereco;
 
     @OneToMany(cascade = { CascadeType.ALL })
@@ -94,5 +97,13 @@ public class Agenda {
 
     public void setMensagem(List<Mensagem> mensagem) {
         this.mensagem = mensagem;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

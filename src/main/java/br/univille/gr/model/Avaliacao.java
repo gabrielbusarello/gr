@@ -13,6 +13,9 @@ public class Avaliacao {
     private char tipo;
     private Date criacao;
 
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    private Usuario usuario;
+
     @OneToOne(cascade= { CascadeType.PERSIST }, optional = false)
     private OrdemServico ordemServico;
 
@@ -62,5 +65,13 @@ public class Avaliacao {
 
     public void setOrdemServico(OrdemServico ordemServico) {
         this.ordemServico = ordemServico;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

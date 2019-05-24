@@ -1,0 +1,1 @@
+INSERT usuario (nome, permissao) VALUES ("Gabriel Dezan Busarello", "1");

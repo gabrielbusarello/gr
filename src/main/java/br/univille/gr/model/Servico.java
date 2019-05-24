@@ -17,15 +17,13 @@ public class Servico {
     private Date alteracao;
 
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    private Usuario usuario;
+
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    private OrdemServico ordemServico;
+
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private TipoServico tipoServico;
-
-    public TipoServico getTipoServico() {
-        return tipoServico;
-    }
-
-    public void setTipoServico(TipoServico tipoServico) {
-        this.tipoServico = tipoServico;
-    }
 
     public long getId() {
         return id;
@@ -65,5 +63,29 @@ public class Servico {
 
     public void setAlteracao(Date alteracao) {
         this.alteracao = alteracao;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public OrdemServico getOrdemServico() {
+        return ordemServico;
+    }
+
+    public void setOrdemServico(OrdemServico ordemServico) {
+        this.ordemServico = ordemServico;
+    }
+
+    public TipoServico getTipoServico() {
+        return tipoServico;
+    }
+
+    public void setTipoServico(TipoServico tipoServico) {
+        this.tipoServico = tipoServico;
     }
 }
