@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+    <head th:include="layout :: htmlhead"></head>
     <body>
-        <table class="table">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col">Nome</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr scope="row" th:each="umusuario : ${usuarios}">
-                    <td th:text="${umusuario.nome}"></td>
+        <div class="container">
+            <nav th:replace="layout :: menu">(menu)</nav>
+            <a href="form.html" th:href="@{usuario/novo}" class="btn btn-primary btn-lg" role="button">Novo</a>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Nome</th>
                 </tr>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <tr scope="row" th:each="umusuario : ${usuarios}">
+                        <td th:text="${umusuario.nome}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:include="layout :: footer" id="footer">(footer)</div>
     </body>
 </html>
