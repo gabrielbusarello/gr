@@ -6,12 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -27,7 +25,6 @@ public class UsuarioController {
         return new ResponseEntity<List<Usuario>>(lista, HttpStatus.OK);
     }*/
 
-    @CrossOrigin(origins = "*")
     @GetMapping()
     public ModelAndView index() {
         List<Usuario> lista = usuarioService.getAll();
@@ -39,4 +36,20 @@ public class UsuarioController {
         return new ModelAndView("usuario/form");
     }
 
+    @PostMapping(params="form")
+    public ModelAndView save(@Valid Usuario usuario) {
+        usuarioService.save(usuario);
+        return new ModelAndView("redirect:/usuario");
+    }
+
+    @GetMapping("/edit/${id}")
+    public ModelAndView edit(@PathVariable("id") Usuario usuario) {
+        return new ModelAndView("usuario/form", "usuario", usuario);
+    }
+
+    @DeleteMapping("/delete/${id}")
+    public ModelAndView delete(@PathVariable("id") Usuario usuario) {
+        usuarioService.delete(usuario);
+        return new ModelAndView("redirect:/usuario");
+    }
 }

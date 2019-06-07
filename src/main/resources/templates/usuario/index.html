@@ -9,11 +9,15 @@
                 <thead class="thead-light">
                 <tr>
                     <th scope="col">Nome</th>
+                    <th scope="col">Cpf</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr scope="row" th:each="umusuario : ${usuarios}">
                         <td th:text="${umusuario.nome}"></td>
+                        <td th:text="${umusuario.cpf}"></td>
+                        <td><a th:href="@{'/usuario/edit/' + ${umusuario.id}}" class="btn btn-primary btn-lg">Alterar</a></td>
                     </tr>
                 </tbody>
             </table>

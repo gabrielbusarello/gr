@@ -18,4 +18,14 @@ public class UsuarioServiceImpl implements UsuarioService {
     public List<Usuario> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public void save(Usuario usuario) {
+        repository.save(usuario);
+    }
+
+    @Override
+    public void delete(Usuario usuario) {
+        repository.delete(usuario);
+    }
 }

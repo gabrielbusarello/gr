@@ -8,4 +8,6 @@ import java.util.List;
 @Service
 public interface UsuarioService {
     List<Usuario> getAll();
+    void save(Usuario usuario);
+    void delete(Usuario usuario);
 }
