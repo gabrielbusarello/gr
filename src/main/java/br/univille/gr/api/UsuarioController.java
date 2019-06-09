@@ -18,14 +18,14 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
-/*
+
     @GetMapping
     public ResponseEntity<List<Usuario>> listarUsuarios() {
         List<Usuario> lista = usuarioService.getAll();
         return new ResponseEntity<List<Usuario>>(lista, HttpStatus.OK);
-    }*/
+    }
 
-    @GetMapping()
+    /*@GetMapping()
     public ModelAndView index() {
         List<Usuario> lista = usuarioService.getAll();
         return new ModelAndView("usuario/index", "usuarios", lista);
@@ -47,9 +47,9 @@ public class UsuarioController {
         return new ModelAndView("usuario/form", "usuario", usuario);
     }
 
-    @DeleteMapping("/delete/${id}")
+    @GetMapping("/delete/${id}")
     public ModelAndView delete(@PathVariable("id") Usuario usuario) {
         usuarioService.delete(usuario);
         return new ModelAndView("redirect:/usuario");
-    }
+    }*/
 }
