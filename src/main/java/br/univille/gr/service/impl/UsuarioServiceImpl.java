@@ -6,6 +6,7 @@ import br.univille.gr.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public void save(Usuario usuario) {
+        if (usuario.getId() == 0) {
+            usuario.setCriacao(new Date());
+        } else {
+            usuario.setAlteracao(new Date());
+        }
+
         repository.save(usuario);
     }
 

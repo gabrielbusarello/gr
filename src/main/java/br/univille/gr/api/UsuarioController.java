@@ -2,15 +2,12 @@ package br.univille.gr.api;
 
 import br.univille.gr.model.Usuario;
 import br.univille.gr.service.UsuarioService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,10 +39,13 @@ public class UsuarioController {
         Usuario oldUsuario = talvezUsuario.get();
 
         oldUsuario.setCpf(newUsuario.getCpf());
-        oldUsuario.setEmail(newUsuario.getCpf());
-        oldUsuario.setCpf(newUsuario.getCpf());
-        oldUsuario.setCpf(newUsuario.getCpf());
+        oldUsuario.setEmail(newUsuario.getEmail());
+        oldUsuario.setMatricula(newUsuario.getMatricula());
         oldUsuario.setNome(newUsuario.getNome());
+        oldUsuario.setCpf(newUsuario.getCpf());
+        oldUsuario.setSenha(newUsuario.getSenha());
+        oldUsuario.setTelefone(newUsuario.getTelefone());
+        oldUsuario.setPermissao(newUsuario.getPermissao());
 
         usuarioService.save(oldUsuario);
 
@@ -53,33 +53,14 @@ public class UsuarioController {
 
     }
 
-//    @DeleteMapping
+    @DeleteMapping(path="/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") long id){
+        Optional<Usuario> talvezUsuario = usuarioService.findById(id);
+        if (!talvezUsuario.isPresent())
+            return ResponseEntity.notFound().build();
 
-    /*@GetMapping()
-    public ModelAndView index() {
-        List<Usuario> lista = usuarioService.getAll();
-        return new ModelAndView("usuario/index", "usuarios", lista);
+        usuarioService.delete(talvezUsuario.get());
+
+        return ResponseEntity.ok().build();
     }
-
-    @GetMapping("/novo")
-    public ModelAndView createForm(@ModelAttribute Usuario usuario) {
-        return new ModelAndView("usuario/form");
-    }
-
-    @PostMapping(params="form")
-    public ModelAndView save(@Valid Usuario usuario) {
-        usuarioService.save(usuario);
-        return new ModelAndView("redirect:/usuario");
-    }
-
-    @GetMapping("/edit/${id}")
-    public ModelAndView edit(@PathVariable("id") Usuario usuario) {
-        return new ModelAndView("usuario/form", "usuario", usuario);
-    }
-
-    @GetMapping("/delete/${id}")
-    public ModelAndView delete(@PathVariable("id") Usuario usuario) {
-        usuarioService.delete(usuario);
-        return new ModelAndView("redirect:/usuario");
-    }*/
 }
