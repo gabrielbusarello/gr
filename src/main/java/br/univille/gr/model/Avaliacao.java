@@ -8,9 +8,13 @@ public class Avaliacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false, length = 2)
     private int pontuacao;
+    @Column(length = 500)
     private String observacao;
+    @Column(nullable = false, length = 1)
     private char tipo;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;
 
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)

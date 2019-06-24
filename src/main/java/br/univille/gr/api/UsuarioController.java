@@ -24,6 +24,15 @@ public class UsuarioController {
         return new ResponseEntity<List<Usuario>>(lista, HttpStatus.OK);
     }
 
+    @GetMapping(path="{id}")
+    public ResponseEntity<Usuario> buscaUsuarioPeloId(@PathVariable("id")long id) {
+        Optional<Usuario> talvezUsuario = usuarioService.findById(id);
+        if (!talvezUsuario.isPresent())
+            return ResponseEntity.notFound().build();
+
+        return new ResponseEntity<Usuario>(talvezUsuario.get(), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<?> save(@RequestBody Usuario usuario) {
         usuarioService.save(usuario);
@@ -32,7 +41,7 @@ public class UsuarioController {
 
     @PutMapping(path="/{id}")
     public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody Usuario newUsuario) {
-        Optional<Usuario> talvezUsuario = (Optional<Usuario>) usuarioService.findById(id);
+        Optional<Usuario> talvezUsuario = usuarioService.findById(id);
         if (!talvezUsuario.isPresent())
             return ResponseEntity.notFound().build();
 

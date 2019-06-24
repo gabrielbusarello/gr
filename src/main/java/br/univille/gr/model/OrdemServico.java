@@ -10,13 +10,20 @@ public class OrdemServico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false, length = 8)
     private Double maoDeObra;
+    @Column(nullable = false, columnDefinition = "TEXT", length = 8000)
     private String descricao;
+    @Column(nullable = false)
     private Date data;
+    @Column(nullable = false, columnDefinition = "TIME")
     private String hora;
     //- P - Pendente / C - Cancelado / F - Finalizado -//
+    @Column(nullable = false, length = 1)
     private char status;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
     @OneToOne(cascade= { CascadeType.PERSIST }, optional = false)

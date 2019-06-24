@@ -10,11 +10,17 @@ public class Agenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false, length = 8000)
     private String descricao;
+    @Column(nullable = false)
     private Date data;
+    @Column(nullable = false)
     private String hora;
+    @Column(nullable = false, length = 1)
     private char status;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)

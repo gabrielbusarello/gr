@@ -8,12 +8,18 @@ public class Despesa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false, length = 100)
     private String nome;
+    @Column(length = 8000)
     private String descricao;
+    @Column(nullable = false, length = 8)
     private Double valor;
+    @Column(nullable = false)
     private Date data;
     private String hora;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)

@@ -8,10 +8,15 @@ public class Ferramenta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false, length = 80)
     private String nome;
+    @Column(nullable = false)
     private Date dtUltimoReparo;
+    @Column(nullable = false, length = 5)
     private int proximoReparo;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)

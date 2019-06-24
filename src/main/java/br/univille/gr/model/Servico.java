@@ -8,8 +8,9 @@ public class Servico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT", length = 8000)
     private String descricao;
+    @Column(nullable = false, length = 8)
     private String tempoGasto;
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;

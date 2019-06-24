@@ -10,18 +10,27 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(unique = true, nullable = false, length = 30)
     private String matricula;
+    @Column(unique = true, nullable = false, length = 15)
     private String cpf;
+    @Column(nullable = false, length = 100)
     private String nome;
+    @Column(nullable = false, length = 70)
     private String email;
+    @Column(nullable = false, length = 20)
     private String senha;
+    @Column(length = 11)
     private String telefone;
+    @Column(nullable = false, length = 1)
     private char permissao;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
-    public Usuario() {
-    }
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = true)
+    private Endereco endereco;
 
     public long getId() {
         return id;
