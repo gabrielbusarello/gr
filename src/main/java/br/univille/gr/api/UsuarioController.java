@@ -24,7 +24,13 @@ public class UsuarioController {
         return new ResponseEntity<List<Usuario>>(lista, HttpStatus.OK);
     }
 
-    @GetMapping(path="{id}")
+    @GetMapping(params = { "user", "password" })
+    public ResponseEntity<Usuario> listarUsuarios(@RequestParam String user, @RequestParam String password) {
+        Usuario usuario = usuarioService.findByUserAndPassword(user, password);
+        return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+    }
+
+    @GetMapping(path="/{id}")
     public ResponseEntity<Usuario> buscaUsuarioPeloId(@PathVariable("id")long id) {
         Optional<Usuario> talvezUsuario = usuarioService.findById(id);
         if (!talvezUsuario.isPresent())

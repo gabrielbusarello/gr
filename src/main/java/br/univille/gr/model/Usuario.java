@@ -29,7 +29,7 @@ public class Usuario {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = true)
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
     private Endereco endereco;
 
     public long getId() {

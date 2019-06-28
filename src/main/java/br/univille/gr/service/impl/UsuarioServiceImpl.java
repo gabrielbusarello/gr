@@ -27,6 +27,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public Usuario findByUserAndPassword(String matricula, String senha) {
+        return repository.findByMatriculaAndSenha(matricula, senha);
+    }
+
+    @Override
     public void save(Usuario usuario) {
         if (usuario.getId() == 0) {
             usuario.setCriacao(new Date());

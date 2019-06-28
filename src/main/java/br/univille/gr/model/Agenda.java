@@ -14,7 +14,7 @@ public class Agenda {
     private String descricao;
     @Column(nullable = false)
     private Date data;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TIME")
     private String hora;
     @Column(nullable = false, length = 1)
     private char status;

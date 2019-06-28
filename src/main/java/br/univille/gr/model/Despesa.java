@@ -16,6 +16,7 @@ public class Despesa {
     private Double valor;
     @Column(nullable = false)
     private Date data;
+    @Column(columnDefinition = "TIME")
     private String hora;
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;
