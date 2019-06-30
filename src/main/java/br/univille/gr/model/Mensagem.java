@@ -13,6 +13,9 @@ public class Mensagem {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;
 
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    private Usuario usuario;
+
     public long getId() {
         return id;
     }
@@ -35,5 +38,13 @@ public class Mensagem {
 
     public void setCriacao(Date criacao) {
         this.criacao = criacao;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

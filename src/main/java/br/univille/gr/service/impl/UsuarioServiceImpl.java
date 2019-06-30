@@ -27,8 +27,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario findByUserAndPassword(String matricula, String senha) {
-        return repository.findByMatriculaAndSenha(matricula, senha);
+    public Usuario findByUserAndPassword(String cpf, String senha) {
+        return repository.findByCpfAndSenha(cpf, senha);
     }
 
     @Override

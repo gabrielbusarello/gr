@@ -10,8 +10,6 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(unique = true, nullable = false, length = 30)
-    private String matricula;
     @Column(unique = true, nullable = false, length = 15)
     private String cpf;
     @Column(nullable = false, length = 100)
@@ -38,14 +36,6 @@ public class Usuario {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
     }
 
     public String getCpf() {

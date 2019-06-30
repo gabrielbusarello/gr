@@ -10,7 +10,7 @@ public class Despesa {
     private long id;
     @Column(nullable = false, length = 100)
     private String nome;
-    @Column(length = 8000)
+    @Column(columnDefinition = "TEXT")
     private String descricao;
     @Column(nullable = false, length = 8)
     private Double valor;

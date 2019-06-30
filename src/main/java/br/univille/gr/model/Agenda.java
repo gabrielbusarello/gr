@@ -10,7 +10,7 @@ public class Agenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false, length = 8000)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String descricao;
     @Column(nullable = false)
     private Date data;

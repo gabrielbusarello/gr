@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface UsuarioService {
     List<Usuario> getAll();
     Optional<Usuario> findById(long id);
-    Usuario findByUserAndPassword(String matricula, String senha);
+    Usuario findByUserAndPassword(String cpf, String senha);
     void save(Usuario usuario);
     void delete(Usuario usuario);
 }

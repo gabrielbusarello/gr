@@ -26,12 +26,50 @@ public class OrdemServico {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
+    public Agenda getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
+    }
+
+    public List<Produto> getProduto() {
+        return produto;
+    }
+
+    public void setProduto(List<Produto> produto) {
+        this.produto = produto;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Usuario getPrestador() {
+        return prestador;
+    }
+
+    public void setPrestador(Usuario prestador) {
+        this.prestador = prestador;
+    }
+
     @OneToOne(cascade= { CascadeType.PERSIST }, optional = false)
     private Agenda agenda;
 
     @OneToMany(cascade = { CascadeType.ALL })
     @JoinColumn(name="ordem_servico_id")
     private List<Produto> produto = new ArrayList<Produto>();
+
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    private Usuario usuario;
+
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    private Usuario prestador;
 
     public long getId() {
         return id;

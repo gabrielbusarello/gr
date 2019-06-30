@@ -55,7 +55,6 @@ public class UsuarioController {
 
         oldUsuario.setCpf(newUsuario.getCpf());
         oldUsuario.setEmail(newUsuario.getEmail());
-        oldUsuario.setMatricula(newUsuario.getMatricula());
         oldUsuario.setNome(newUsuario.getNome());
         oldUsuario.setCpf(newUsuario.getCpf());
         oldUsuario.setSenha(newUsuario.getSenha());
