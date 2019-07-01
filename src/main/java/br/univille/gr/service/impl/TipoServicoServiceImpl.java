@@ -26,14 +26,14 @@ public class TipoServicoServiceImpl implements TipoServicoService {
     }
 
     @Override
-    public void save(TipoServico tipoServico) {
+    public TipoServico save(TipoServico tipoServico) {
         if (tipoServico.getId() == 0) {
             tipoServico.setCriacao(new Date());
         } else {
             tipoServico.setAlteracao(new Date());
         }
 
-        repository.save(tipoServico);
+        return repository.save(tipoServico);
     }
 
     @Override

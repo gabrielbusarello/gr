@@ -10,6 +10,6 @@ import java.util.Optional;
 public interface TipoServicoService {
     List<TipoServico> getAll();
     Optional<TipoServico> findById(long id);
-    void save(TipoServico tipoServico);
+    TipoServico save(TipoServico tipoServico);
     void delete(TipoServico tipoServico);
 }
