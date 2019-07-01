@@ -24,7 +24,7 @@
 //        http.cors().and()
 //                .csrf().disable()
 //                .authorizeRequests()
-//                .antMatchers("/login").permitAll()
+//                .antMatchers("/usuario").permitAll()
 //                .anyRequest().authenticated()
 //                .and()
 //                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
