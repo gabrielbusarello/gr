@@ -65,6 +65,7 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<Resposta<Usuario>> save(@RequestBody Usuario usuario) {
+        
         Usuario usuarioI = usuarioService.save(usuario);
         Resposta<Usuario> resposta = new Resposta<Usuario>();
         if(usuario == null) {
@@ -86,7 +87,6 @@ public class UsuarioController {
 
         Usuario oldUsuario = talvezUsuario.get();
 
-        oldUsuario.setCpf(newUsuario.getCpf());
         oldUsuario.setEmail(newUsuario.getEmail());
         oldUsuario.setNome(newUsuario.getNome());
         oldUsuario.setCpf(newUsuario.getCpf());
