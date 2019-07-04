@@ -1,7 +1,5 @@
 package br.univille.gr.model;
 
-import org.springframework.context.annotation.Primary;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,7 +14,7 @@ public class Usuario {
     private String nome;
     @Column(nullable = false, length = 70)
     private String email;
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 100)
     private String senha;
     @Column(length = 11)
     private String telefone;

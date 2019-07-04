@@ -13,7 +13,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuario")
-@CrossOrigin(origins = "*")
 public class UsuarioController {
 
     @Autowired
@@ -65,7 +64,6 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<Resposta<Usuario>> save(@RequestBody Usuario usuario) {
-        
         Usuario usuarioI = usuarioService.save(usuario);
         Resposta<Usuario> resposta = new Resposta<Usuario>();
         if(usuario == null) {
