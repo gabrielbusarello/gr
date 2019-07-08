@@ -35,7 +35,19 @@ public class JwtAuthenticationController {
     private JwtUserDetailsService userDetailsService;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity
+    public ResponseEntity<Resposta<Usuario>> register(@RequestBody Usuario usuario) {
+        Usuario usuarioI = usuarioService.save(usuario);
+        Resposta<Usuario> resposta = new Resposta<Usuario>();
+        if(usuario == null) {
+            resposta.setStatus(3);
+            resposta.setMensagem("Usuário não foi registrado!");
+            return new ResponseEntity<Resposta<Usuario>>(resposta, HttpStatus.OK);
+        }
+        resposta.setStatus(1);
+        resposta.setData(usuarioI);
+        resposta.setMensagem("Usuário cadastrado com sucesso!");
+        return new ResponseEntity<Resposta<Usuario>>(resposta, HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<Resposta<JwtResponse>> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
