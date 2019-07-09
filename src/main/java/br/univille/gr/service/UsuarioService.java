@@ -11,6 +11,7 @@ public interface UsuarioService {
     List<Usuario> getAll();
     Optional<Usuario> findById(long id);
     Usuario findByUserAndPassword(String cpf, String senha);
+    Usuario findByUser(String cpf);
     Usuario save(Usuario usuario);
     void delete(Usuario usuario);
 }

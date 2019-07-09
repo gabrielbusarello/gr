@@ -4,6 +4,7 @@ import br.univille.gr.model.Usuario;
 import br.univille.gr.repository.UsuarioRepository;
 import br.univille.gr.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -15,6 +16,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioRepository repository;
+
+    @Autowired
+    private PasswordEncoder bcryptEncoder;
 
     @Override
     public List<Usuario> getAll() {
@@ -32,12 +36,18 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public Usuario findByUser(String cpf) {
+        return repository.findByCpf(cpf);
+    }
+
+    @Override
     public Usuario save(Usuario usuario) {
         if (usuario.getId() == 0) {
             usuario.setCriacao(new Date());
         } else {
             usuario.setAlteracao(new Date());
         }
+        usuario.setSenha(bcryptEncoder.encode(usuario.getSenha()));
 
         return repository.save(usuario);
     }
