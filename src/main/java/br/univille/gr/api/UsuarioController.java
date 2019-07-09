@@ -53,9 +53,7 @@ public class UsuarioController {
         Optional<Usuario> talvezUsuario = usuarioService.findById(id);
         Resposta<Usuario> resposta = new Resposta<Usuario>();
         if (!talvezUsuario.isPresent()) {
-            resposta.setStatus(2);
-            resposta.setMensagem("Usuário não encontrado!");
-            return new ResponseEntity<Resposta<Usuario>>(resposta, HttpStatus.NOT_FOUND);
+            return this.naoEncontrado(resposta);
         }
         talvezUsuario.get().setSenha(null);
         resposta.setStatus(1);
@@ -82,8 +80,10 @@ public class UsuarioController {
     @PutMapping(path="/{id}")
     public ResponseEntity<Resposta<Usuario>> update(@PathVariable("id")long id, @RequestBody Usuario newUsuario) {
         Optional<Usuario> talvezUsuario = usuarioService.findById(id);
-        if (!talvezUsuario.isPresent())
-            return ResponseEntity.notFound().build();
+        Resposta<Usuario> resposta = new Resposta<Usuario>();
+        if (!talvezUsuario.isPresent()) {
+            return this.naoEncontrado(resposta);
+        }
 
         Usuario oldUsuario = talvezUsuario.get();
 
@@ -94,12 +94,12 @@ public class UsuarioController {
 
         Usuario usuarioA = usuarioService.save(oldUsuario);
 
-        Resposta<Usuario> resposta = new Resposta<Usuario>();
         if(usuarioA == null) {
             resposta.setStatus(3);
             resposta.setMensagem("Usuário não foi alterado!");
             return new ResponseEntity<Resposta<Usuario>>(resposta, HttpStatus.OK);
         }
+        usuarioA.setSenha(null);
         resposta.setStatus(1);
         resposta.setData(usuarioA);
         resposta.setMensagem("Usuário alterado com sucesso!");
@@ -109,15 +109,22 @@ public class UsuarioController {
     @DeleteMapping(path="/{id}")
     public ResponseEntity<Resposta<Usuario>> delete(@PathVariable("id") long id){
         Optional<Usuario> talvezUsuario = usuarioService.findById(id);
-        if (!talvezUsuario.isPresent())
-            return ResponseEntity.notFound().build();
+        Resposta<Usuario> resposta = new Resposta<Usuario>();
+        if (!talvezUsuario.isPresent()) {
+            return this.naoEncontrado(resposta);
+        }
 
         usuarioService.delete(talvezUsuario.get());
 
-        Resposta<Usuario> resposta = new Resposta<Usuario>();
         resposta.setStatus(1);
         resposta.setMensagem("Usuário excluído com sucesso!");
 
         return new ResponseEntity<Resposta<Usuario>>(resposta, HttpStatus.OK);
+    }
+
+    private ResponseEntity<Resposta<Usuario>> naoEncontrado(Resposta<Usuario> resposta) {
+        resposta.setStatus(2);
+        resposta.setMensagem("Usuário não encontrado!");
+        return new ResponseEntity<Resposta<Usuario>>(resposta, HttpStatus.NOT_FOUND);
     }
 }

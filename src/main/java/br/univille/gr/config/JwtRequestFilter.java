@@ -34,20 +34,21 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         String jwtToken = null;
         // JWT Token is in the form "Bearer token". Remove Bearer word and get
         // only the Token
-        if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
-            jwtToken = requestTokenHeader.substring(7);
-            try {
-                username = jwtTokenUtil.getUsernameFromToken(jwtToken);
-            } catch (IllegalArgumentException e) {
-                response.sendError(400, "Unable to get JWT Token");
-                System.out.println("Unable to get JWT Token");
-            } catch (ExpiredJwtException e) {
-                response.sendError(403, "JWT Token has expired");
-                System.out.println("JWT Token has expired");
+        if (requestTokenHeader != null) {
+            if (requestTokenHeader.startsWith("Bearer ")) {
+                jwtToken = requestTokenHeader.substring(7);
+                try {
+                    username = jwtTokenUtil.getUsernameFromToken(jwtToken);
+                } catch (IllegalArgumentException e) {
+                    request.setAttribute("unable", "Não foi possível recuperar a sessão");
+                } catch (ExpiredJwtException e) {
+                    request.setAttribute("expired", "Sessão expirada. Favor fazer login novamente!");
+                    System.out.println("JWT Token has expired");
+                }
+            } else {
+                request.setAttribute("bearer", "Token não inicia com o Bearer");
+                logger.warn("JWT Token does not begin with Bearer String");
             }
-        } else {
-//            response.sendError(400, "JWT Token does not begin with Bearer String");
-            logger.warn("JWT Token does not begin with Bearer String");
         }
         // Once we get the token validate it.
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
