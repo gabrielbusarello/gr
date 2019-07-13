@@ -38,9 +38,7 @@ public class FerramentaController {
         Resposta<Ferramenta> resposta = new Resposta<Ferramenta>();
 
         if (!talvezFerramenta.isPresent()) {
-            resposta.setStatus(2);
-            resposta.setMensagem("Ferramenta não encontrada!");
-            return new ResponseEntity<Resposta<Ferramenta>>(resposta, HttpStatus.NOT_FOUND);
+            return naoEncontrado(resposta);
         }
 
         resposta.setStatus(1);
@@ -72,8 +70,10 @@ public class FerramentaController {
     public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody Ferramenta newFerramenta) {
         Optional<Ferramenta> talvezFerramenta = ferramentaService.findById(id);
 
-        if (!talvezFerramenta.isPresent())
-            return ResponseEntity.notFound().build();
+        Resposta<Ferramenta> resposta = new Resposta<Ferramenta>();
+        if (!talvezFerramenta.isPresent()) {
+            return naoEncontrado(resposta);
+        }
 
         Ferramenta oldFerramenta = talvezFerramenta.get();
 
@@ -82,8 +82,6 @@ public class FerramentaController {
         oldFerramenta.setProximoReparo(newFerramenta.getProximoReparo());
 
         Ferramenta FerramentaA = ferramentaService.save(oldFerramenta);
-
-        Resposta<Ferramenta> resposta = new Resposta<Ferramenta>();
 
         if(FerramentaA == null) {
             resposta.setStatus(3);
@@ -102,12 +100,22 @@ public class FerramentaController {
     @DeleteMapping(path="/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") long id){
         Optional<Ferramenta> talvezFerramenta = ferramentaService.findById(id);
-
-        if (!talvezFerramenta.isPresent())
-            return ResponseEntity.notFound().build();
+        Resposta<Ferramenta> resposta = new Resposta<Ferramenta>();
+        if (!talvezFerramenta.isPresent()) {
+            return naoEncontrado(resposta);
+        }
 
         ferramentaService.delete(talvezFerramenta.get());
 
-        return ResponseEntity.ok().build();
+        resposta.setStatus(1);
+        resposta.setMensagem("Tipo de Serviço excluída com sucesso!");
+
+        return new ResponseEntity<Resposta<Ferramenta>>(resposta, HttpStatus.OK);
+    }
+
+    private ResponseEntity<Resposta<Ferramenta>> naoEncontrado(Resposta<Ferramenta> resposta) {
+        resposta.setStatus(2);
+        resposta.setMensagem("Ferramenta não encontrada!");
+        return new ResponseEntity<Resposta<Ferramenta>>(resposta, HttpStatus.NOT_FOUND);
     }
 }

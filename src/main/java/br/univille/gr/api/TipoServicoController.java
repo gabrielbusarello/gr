@@ -39,9 +39,7 @@ public class TipoServicoController {
         Resposta<TipoServico> resposta = new Resposta<TipoServico>();
 
         if (!talvezTipoServico.isPresent()) {
-            resposta.setStatus(2);
-            resposta.setMensagem("Tipo de serviço não encontrado!");
-            return new ResponseEntity<Resposta<TipoServico>>(resposta, HttpStatus.NOT_FOUND);
+            return naoEncontrado(resposta);
         }
 
         resposta.setStatus(1);
@@ -73,8 +71,10 @@ public class TipoServicoController {
     public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody TipoServico newTipoServico) {
         Optional<TipoServico> talvezTipoServico = tipoServicoService.findById(id);
 
-        if (!talvezTipoServico.isPresent())
-            return ResponseEntity.notFound().build();
+        Resposta<TipoServico> resposta = new Resposta<TipoServico>();
+        if (!talvezTipoServico.isPresent()) {
+            return naoEncontrado(resposta);
+        }
 
         TipoServico oldTipoServico = talvezTipoServico.get();
 
@@ -83,8 +83,6 @@ public class TipoServicoController {
         oldTipoServico.setValorEstimado(newTipoServico.getValorEstimado());
 
         TipoServico TipoServicoA = tipoServicoService.save(oldTipoServico);
-
-        Resposta<TipoServico> resposta = new Resposta<TipoServico>();
 
         if(TipoServicoA == null) {
             resposta.setStatus(3);
@@ -103,12 +101,22 @@ public class TipoServicoController {
     @DeleteMapping(path="/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") long id){
         Optional<TipoServico> talvezTipoServico = tipoServicoService.findById(id);
-
-        if (!talvezTipoServico.isPresent())
-            return ResponseEntity.notFound().build();
+        Resposta<TipoServico> resposta = new Resposta<TipoServico>();
+        if (!talvezTipoServico.isPresent()) {
+            return naoEncontrado(resposta);
+        }
 
         tipoServicoService.delete(talvezTipoServico.get());
 
-        return ResponseEntity.ok().build();
+        resposta.setStatus(1);
+        resposta.setMensagem("Tipo de Serviço excluída com sucesso!");
+
+        return new ResponseEntity<Resposta<TipoServico>>(resposta, HttpStatus.OK);
+    }
+
+    private ResponseEntity<Resposta<TipoServico>> naoEncontrado(Resposta<TipoServico> resposta) {
+        resposta.setStatus(2);
+        resposta.setMensagem("Tipo de Serviço não encontrado!");
+        return new ResponseEntity<Resposta<TipoServico>>(resposta, HttpStatus.NOT_FOUND);
     }
 }
