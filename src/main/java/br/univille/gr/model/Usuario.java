@@ -1,5 +1,8 @@
 package br.univille.gr.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -60,6 +63,8 @@ public class Usuario {
         this.email = email;
     }
 
+    @JsonIgnore
+    @JsonProperty(value = "senha")
     public String getSenha() {
         return senha;
     }

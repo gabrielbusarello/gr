@@ -59,13 +59,13 @@ public class FerramentaController {
 
         if(Ferramenta == null) {
             resposta.setStatus(3);
-            resposta.setMensagem("Ferramenta não foi registrado!");
+            resposta.setMensagem("Ferramenta não foi registrada!");
             return new ResponseEntity<Resposta<Ferramenta>>(resposta, HttpStatus.OK);
         }
 
         resposta.setStatus(1);
         resposta.setData(ferramenta);
-        resposta.setMensagem("Ferramenta cadastrado com sucesso!");
+        resposta.setMensagem("Ferramenta cadastrada com sucesso!");
 
         return new ResponseEntity<Resposta<Ferramenta>>(resposta, HttpStatus.OK);
     }
@@ -112,7 +112,7 @@ public class FerramentaController {
         ferramentaService.delete(talvezFerramenta.get());
 
         resposta.setStatus(1);
-        resposta.setMensagem("Tipo de Serviço excluída com sucesso!");
+        resposta.setMensagem("Ferramenta excluída com sucesso!");
 
         return new ResponseEntity<Resposta<Ferramenta>>(resposta, HttpStatus.OK);
     }

@@ -113,7 +113,7 @@ public class TipoServicoController {
         tipoServicoService.delete(talvezTipoServico.get());
 
         resposta.setStatus(1);
-        resposta.setMensagem("Tipo de Serviço excluída com sucesso!");
+        resposta.setMensagem("Tipo de Serviço excluído com sucesso!");
 
         return new ResponseEntity<Resposta<TipoServico>>(resposta, HttpStatus.OK);
     }
