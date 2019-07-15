@@ -4,8 +4,11 @@ package br.univille.gr.api;
 import br.univille.gr.model.TipoServico;
 import br.univille.gr.service.TipoServicoService;
 import br.univille.gr.util.Resposta;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,8 +16,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/tipo-servico")
-@CrossOrigin(origins = "*")
 public class TipoServicoController {
+
+    @Autowired
     private TipoServicoService tipoServicoService;
 
     @GetMapping

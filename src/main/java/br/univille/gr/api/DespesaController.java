@@ -6,6 +6,8 @@ import br.univille.gr.util.Resposta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,7 +39,7 @@ public class DespesaController {
         Optional<Despesa> talvezDespesa = despesaService.findById(id);
         Resposta<Despesa> resposta = new Resposta<Despesa>();
         if (!talvezDespesa.isPresent()) {
-            return naoEncontrado(resposta);
+            return this.naoEncontrado(resposta);
         }
         resposta.setStatus(1);
         resposta.setData(talvezDespesa.get());
