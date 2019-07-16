@@ -2,6 +2,7 @@ package br.univille.gr.service.impl;
 
 import br.univille.gr.model.Ferramenta;
 import br.univille.gr.model.TipoServico;
+import br.univille.gr.model.Usuario;
 import br.univille.gr.repository.FerramentaRepository;
 import br.univille.gr.repository.TipoServicoRepository;
 import br.univille.gr.repository.UsuarioRepository;
@@ -24,14 +25,20 @@ public class FerramentaImpl  implements FerramentaService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    private Usuario getUser() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return usuarioRepository.findByCpf(userDetails.getUsername());
+    }
+
     @Override
     public List<Ferramenta> getAll() {
-        return repository.findAll();
+        return repository.findAllByUsuario(this.getUser());
     }
 
     @Override
     public Optional<Ferramenta> findById(long id) {
-        return repository.findById(id);
+        return repository.findByIdAndUsuario(id, this.getUser());
     }
 
     @Override

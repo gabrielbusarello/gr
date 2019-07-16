@@ -1,6 +1,7 @@
 package br.univille.gr.service.impl;
 
 import br.univille.gr.model.TipoServico;
+import br.univille.gr.model.Usuario;
 import br.univille.gr.repository.TipoServicoRepository;
 import br.univille.gr.repository.UsuarioRepository;
 import br.univille.gr.service.TipoServicoService;
@@ -22,14 +23,20 @@ public class TipoServicoServiceImpl implements TipoServicoService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    private Usuario getUser() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return usuarioRepository.findByCpf(userDetails.getUsername());
+    }
+
     @Override
     public List<TipoServico> getAll() {
-        return repository.findAll();
+        return repository.findAllByUsuario(this.getUser());
     }
 
     @Override
     public Optional<TipoServico> findById(long id) {
-        return repository.findById(id);
+        return repository.findByIdAndUsuario(id, this.getUser());
     }
 
     @Override

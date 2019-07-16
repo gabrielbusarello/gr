@@ -1,6 +1,7 @@
 package br.univille.gr.service.impl;
 
 import br.univille.gr.model.Despesa;
+import br.univille.gr.model.Usuario;
 import br.univille.gr.repository.DespesaRepository;
 import br.univille.gr.repository.UsuarioRepository;
 import br.univille.gr.service.DespesaService;
@@ -22,20 +23,25 @@ public class DespesaServiceImpl implements DespesaService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
+    private Usuario getUser() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return usuarioRepository.findByCpf(userDetails.getUsername());
+    }
+
     @Override
     public List<Despesa> getAll() {
-        return repository.findAll();
+        return repository.findAllByUsuario(this.getUser());
     }
 
     @Override
     public Optional<Despesa> findById(long id) {
-        return repository.findById(id);
+        return repository.findByIdAndUsuario(id, this.getUser());
     }
 
     @Override
     public Despesa save(Despesa despesa) {
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        despesa.setUsuario(usuarioRepository.findByCpf(userDetails.getUsername()));
+        despesa.setUsuario(this.getUser());
 
         if (despesa.getId() == 0) {
             despesa.setCriacao(new Date());
