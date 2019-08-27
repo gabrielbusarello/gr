@@ -2,6 +2,7 @@ package br.univille.gr.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -28,7 +29,7 @@ public class Usuario {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
     private Endereco endereco;
 
     public long getId() {
@@ -103,5 +104,13 @@ public class Usuario {
 
     public void setAlteracao(Date alteracao) {
         this.alteracao = alteracao;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }

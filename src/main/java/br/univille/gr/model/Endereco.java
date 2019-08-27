@@ -27,9 +27,6 @@ public class Endereco {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
-    private Usuario usuario;
-
     public long getId() {
         return id;
     }
@@ -110,11 +107,4 @@ public class Endereco {
         this.alteracao = alteracao;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }

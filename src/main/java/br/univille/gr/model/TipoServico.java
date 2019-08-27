@@ -1,6 +1,8 @@
 package br.univille.gr.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -8,6 +10,8 @@ public class TipoServico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotNull()
+    @NotEmpty(message = "O campo nome não pode ser vazio!")
     @Column(nullable = false, length = 80)
     private String nome;
     @Column(columnDefinition = "TEXT", length = 8000)

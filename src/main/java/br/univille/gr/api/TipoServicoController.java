@@ -7,10 +7,9 @@ import br.univille.gr.util.Resposta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,7 +52,7 @@ public class TipoServicoController {
     }
 
     @PostMapping
-    public ResponseEntity<Resposta<TipoServico>> save(@RequestBody TipoServico TipoServico) {
+    public ResponseEntity<Resposta<TipoServico>> save(@RequestBody @Valid TipoServico TipoServico) {
         TipoServico tipoServico = tipoServicoService.save(TipoServico);
 
         Resposta<TipoServico> resposta = new Resposta<TipoServico>();
@@ -72,7 +71,7 @@ public class TipoServicoController {
     }
 
     @PutMapping(path="/{id}")
-    public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody TipoServico newTipoServico) {
+    public ResponseEntity<?> update(@PathVariable("id")long id, @RequestBody @Valid TipoServico newTipoServico) {
         Optional<TipoServico> talvezTipoServico = tipoServicoService.findById(id);
 
         Resposta<TipoServico> resposta = new Resposta<TipoServico>();

@@ -91,6 +91,7 @@ public class UsuarioController {
         oldUsuario.setNome(newUsuario.getNome());
         oldUsuario.setTelefone(newUsuario.getTelefone());
         oldUsuario.setPermissao(newUsuario.getPermissao());
+        oldUsuario.setEndereco(newUsuario.getEndereco());
 
         Usuario usuarioA = usuarioService.save(oldUsuario);
 
