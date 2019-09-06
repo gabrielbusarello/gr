@@ -1,6 +1,9 @@
 package br.univille.gr.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,12 +13,20 @@ public class Agenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotNull()
+    @NotEmpty(message = "O campo descrição não pode ser vazio!")
+    @Size(max = 8000, message = "O campo não pode ultrapassar 8000 caracteres")
     @Column(nullable = false, columnDefinition = "TEXT")
     private String descricao;
+    @NotNull()
     @Column(nullable = false)
     private Date data;
+    @NotNull()
     @Column(nullable = false, columnDefinition = "TIME")
     private String hora;
+    @NotNull()
+    @NotEmpty(message = "O campo status não pode ser vazio!")
+    @Size(max = 1, message = "O campo status não pode ultrapassar 1 caractere")
     @Column(nullable = false, length = 1)
     private char status;
     @Temporal(value = TemporalType.TIMESTAMP)
@@ -23,9 +34,11 @@ public class Agenda {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
+    @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Usuario usuario;
 
+    @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Endereco endereco;
 

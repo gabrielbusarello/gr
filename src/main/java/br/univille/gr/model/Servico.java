@@ -1,6 +1,9 @@
 package br.univille.gr.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -8,8 +11,12 @@ public class Servico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotNull()
+    @NotEmpty(message = "O campo descrição não pode ser vazio!")
+    @Size(max = 8000, message = "O campo não pode ultrapassar 8000 caracteres")
     @Column(nullable = false, columnDefinition = "TEXT")
     private String descricao;
+    @NotNull()
     @Column(nullable = false, columnDefinition = "TIME")
     private String tempoGasto;
     @Temporal(value = TemporalType.TIMESTAMP)
@@ -17,12 +24,15 @@ public class Servico {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
+    @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Usuario usuario;
 
+    @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private OrdemServico ordemServico;
 
+    @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private TipoServico tipoServico;
 

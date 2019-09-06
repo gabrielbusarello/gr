@@ -1,6 +1,9 @@
 package br.univille.gr.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,21 +13,46 @@ public class OrdemServico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotNull()
     @Column(nullable = false, length = 8)
     private Double maoDeObra;
+    @NotNull()
+    @NotEmpty(message = "O campo descrição não pode ser vazio!")
+    @Size(max = 8000, message = "O campo não pode ultrapassar 8000 caracteres")
     @Column(nullable = false, columnDefinition = "TEXT", length = 8000)
     private String descricao;
+    @NotNull()
     @Column(nullable = false)
     private Date data;
+    @NotNull()
     @Column(nullable = false, columnDefinition = "TIME")
     private String hora;
     //- P - Pendente / C - Cancelado / F - Finalizado -//
+    @NotNull()
+    @NotEmpty(message = "O campo status não pode ser vazio!")
+    @Size(max = 1, message = "O campo não pode ultrapassar 1 caracter")
     @Column(nullable = false, length = 1)
     private char status;
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
+
+    @NotNull()
+    @OneToOne(cascade= { CascadeType.PERSIST }, optional = false)
+    private Agenda agenda;
+
+    @OneToMany(cascade = { CascadeType.ALL })
+    @JoinColumn(name="ordem_servico_id")
+    private List<Produto> produto = new ArrayList<Produto>();
+
+    @NotNull()
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    private Usuario usuario;
+
+    @NotNull()
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    private Usuario prestador;
 
     public Agenda getAgenda() {
         return agenda;
@@ -57,19 +85,6 @@ public class OrdemServico {
     public void setPrestador(Usuario prestador) {
         this.prestador = prestador;
     }
-
-    @OneToOne(cascade= { CascadeType.PERSIST }, optional = false)
-    private Agenda agenda;
-
-    @OneToMany(cascade = { CascadeType.ALL })
-    @JoinColumn(name="ordem_servico_id")
-    private List<Produto> produto = new ArrayList<Produto>();
-
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
-    private Usuario usuario;
-
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
-    private Usuario prestador;
 
     public long getId() {
         return id;

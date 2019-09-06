@@ -1,6 +1,9 @@
 package br.univille.gr.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -8,18 +11,25 @@ public class Avaliacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotNull()
     @Column(nullable = false, length = 2)
     private int pontuacao;
+    @Size(max = 500, message = "O campo observação não pode ultrapassar 500 caracteres")
     @Column(length = 500)
     private String observacao;
+    @NotNull()
+    @NotEmpty(message = "O campo tipo não pode ser vazio!")
+    @Size(max = 1, message = "O campo status não pode ultrapassar 1 caractere")
     @Column(nullable = false, length = 1)
     private char tipo;
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;
 
+    @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Usuario usuario;
 
+    @NotNull()
     @OneToOne(cascade= { CascadeType.PERSIST }, optional = false)
     private OrdemServico ordemServico;
 

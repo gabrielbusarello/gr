@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -12,16 +15,30 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotNull()
     @Column(unique = true, nullable = false, length = 15)
     private String cpf;
+    @NotNull()
+    @NotEmpty(message = "O campo nome não pode ser vazio!")
+    @Size(max = 100, message = "O campo não pode ultrapassar 100 caracteres")
     @Column(nullable = false, length = 100)
     private String nome;
+    @NotNull()
+    @NotEmpty(message = "O campo email não pode ser vazio!")
+    @Size(max = 70, message = "O campo não pode ultrapassar 70 caracteres")
     @Column(nullable = false, length = 70)
     private String email;
+    @NotNull()
+    @NotEmpty(message = "O campo senha não pode ser vazio!")
+    @Size(max = 100, message = "O campo não pode ultrapassar 100 caracteres")
     @Column(nullable = false, length = 100)
     private String senha;
+    @NotNull()
     @Column(length = 11)
     private String telefone;
+    @NotNull()
+    @NotEmpty(message = "O campo permissão não pode ser vazio!")
+    @Size(max = 1, message = "O campo não pode ultrapassar 1 caracter")
     @Column(nullable = false, length = 1)
     private char permissao;
     @Temporal(value = TemporalType.TIMESTAMP)

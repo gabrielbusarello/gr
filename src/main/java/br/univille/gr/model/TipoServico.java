@@ -3,6 +3,7 @@ package br.univille.gr.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -12,10 +13,13 @@ public class TipoServico {
     private long id;
     @NotNull()
     @NotEmpty(message = "O campo nome não pode ser vazio!")
+    @Size(max = 80, message = "O campo não pode ultrapassar 80 caracteres")
     @Column(nullable = false, length = 80)
     private String nome;
+    @Size(max = 8000, message = "O campo não pode ultrapassar 8000 caracteres")
     @Column(columnDefinition = "TEXT", length = 8000)
     private String descricao;
+    @NotNull()
     @Column(nullable = false, length = 8)
     private double valorEstimado;
     @Temporal(value = TemporalType.TIMESTAMP)
@@ -23,6 +27,7 @@ public class TipoServico {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
+    @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Usuario usuario;
 
