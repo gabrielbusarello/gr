@@ -1,11 +1,12 @@
 package br.univille.gr.service;
 
 import br.univille.gr.model.Agenda;
-import br.univille.gr.model.Despesa;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public interface AgendaService {
     List<Agenda> getAll();
     Optional<Agenda> findById(long id);
