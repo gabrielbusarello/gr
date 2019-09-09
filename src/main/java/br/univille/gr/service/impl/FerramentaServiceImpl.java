@@ -1,10 +1,8 @@
 package br.univille.gr.service.impl;
 
 import br.univille.gr.model.Ferramenta;
-import br.univille.gr.model.TipoServico;
 import br.univille.gr.model.Usuario;
 import br.univille.gr.repository.FerramentaRepository;
-import br.univille.gr.repository.TipoServicoRepository;
 import br.univille.gr.repository.UsuarioRepository;
 import br.univille.gr.service.FerramentaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class FerramentaImpl  implements FerramentaService {
+public class FerramentaServiceImpl implements FerramentaService {
 
     @Autowired
     private FerramentaRepository repository;
