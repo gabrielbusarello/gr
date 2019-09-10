@@ -15,7 +15,6 @@ public class Agenda {
     private long id;
     @NotNull()
     @NotEmpty(message = "O campo descrição não pode ser vazio!")
-    @Size(max = 8000, message = "O campo não pode ultrapassar 8000 caracteres")
     @Column(nullable = false, columnDefinition = "TEXT")
     private String descricao;
     @NotNull()
@@ -25,8 +24,6 @@ public class Agenda {
     @Column(nullable = false, columnDefinition = "TIME")
     private String hora;
     @NotNull()
-    @NotEmpty(message = "O campo status não pode ser vazio!")
-    @Size(max = 1, message = "O campo status não pode ultrapassar 1 caractere")
     @Column(nullable = false, length = 1)
     private char status;
     @Temporal(value = TemporalType.TIMESTAMP)
