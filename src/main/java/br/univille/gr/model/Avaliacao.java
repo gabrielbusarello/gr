@@ -18,9 +18,6 @@ public class Avaliacao {
     @Column(length = 500)
     private String observacao;
     @NotNull()
-    @NotEmpty(message = "O campo tipo não pode ser vazio!")
-    @Size(max = 1, message = "O campo status não pode ultrapassar 1 caractere")
-    @Column(nullable = false, length = 1)
     private char tipo;
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;

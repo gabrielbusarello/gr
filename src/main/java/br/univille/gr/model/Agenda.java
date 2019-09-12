@@ -15,6 +15,7 @@ public class Agenda {
     private long id;
     @NotNull()
     @NotEmpty(message = "O campo descrição não pode ser vazio!")
+    @Size(max = 8000, message = "O campo não pode ultrapassar 8000 caracteres")
     @Column(nullable = false, columnDefinition = "TEXT")
     private String descricao;
     @NotNull()

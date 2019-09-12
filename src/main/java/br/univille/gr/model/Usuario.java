@@ -20,16 +20,20 @@ public class Usuario {
     private String cpf;
     @NotNull()
     @NotEmpty(message = "O campo nome não pode ser vazio!")
+    @Size(max = 100, message = "O campo não pode ultrapassar 100 caracteres")
     @Column(nullable = false, length = 100)
     private String nome;
     @NotNull()
     @NotEmpty(message = "O campo email não pode ser vazio!")
+    @Size(max = 70, message = "O campo não pode ultrapassar 70 caracteres")
     @Column(nullable = false, length = 70)
     private String email;
     @NotNull()
     @NotEmpty(message = "O campo senha não pode ser vazio!")
+    @Size(max = 100, message = "O campo não pode ultrapassar 100 caracteres")
     @Column(nullable = false, length = 100)
     private String senha;
+    @NotNull()
     @Column(length = 11)
     private String telefone;
     @NotNull()

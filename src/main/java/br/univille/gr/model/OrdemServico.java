@@ -29,8 +29,6 @@ public class OrdemServico {
     private String hora;
     //- P - Pendente / C - Cancelado / F - Finalizado -//
     @NotNull()
-    @NotEmpty(message = "O campo status não pode ser vazio!")
-    @Size(max = 1, message = "O campo não pode ultrapassar 1 caracter")
     @Column(nullable = false, length = 1)
     private char status;
     @Temporal(value = TemporalType.TIMESTAMP)
