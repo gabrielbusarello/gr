@@ -44,7 +44,6 @@ public class OrdemServico {
     @JoinColumn(name="ordem_servico_id")
     private List<Produto> produto = new ArrayList<Produto>();
 
-    @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Usuario usuario;
 

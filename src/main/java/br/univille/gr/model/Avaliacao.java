@@ -22,7 +22,6 @@ public class Avaliacao {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date criacao;
 
-    @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Usuario usuario;
 

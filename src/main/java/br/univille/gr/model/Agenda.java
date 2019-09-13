@@ -32,7 +32,6 @@ public class Agenda {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
-    @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Usuario usuario;
 

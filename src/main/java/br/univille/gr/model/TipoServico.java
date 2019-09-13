@@ -27,7 +27,6 @@ public class TipoServico {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
-    @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Usuario usuario;
 
