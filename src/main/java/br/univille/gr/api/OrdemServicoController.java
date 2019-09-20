@@ -46,66 +46,66 @@ public class OrdemServicoController {
     }
 
     @PostMapping
-    public ResponseEntity<Resposta<OrdemServico>> save(@RequestBody OrdemServico ordemServico) {
+    public ResponseEntity<Resposta<OrdemServico>> save(@RequestBody OrdemServico OrdemServico) {
         OrdemServico ordemServicoI = ordemServicoService.save(OrdemServico);
         Resposta<OrdemServico> resposta = new Resposta<OrdemServico>();
         if(OrdemServico == null) {
             resposta.setStatus(3);
-            resposta.setMensagem("Agenda não foi registrada!");
+            resposta.setMensagem("Ordem de serviço não foi registrada!");
             return new ResponseEntity<Resposta<OrdemServico>>(resposta, HttpStatus.OK);
         }
         resposta.setStatus(1);
-        resposta.setData(agendaI);
-        resposta.setMensagem("Agenda cadastrada com sucesso!");
+        resposta.setData(ordemServicoI);
+        resposta.setMensagem("Ordem de serviço cadastrada com sucesso!");
         return new ResponseEntity<Resposta<OrdemServico>>(resposta, HttpStatus.OK);
     }
 
     @PutMapping(path="/{id}")
-    public ResponseEntity<Resposta<OrdemServico>> update(@PathVariable("id")long id, @RequestBody Agenda newAgenda) {
-        Optional<OrdemServico> talvezAgenda = agendaService.findById(id);
+    public ResponseEntity<Resposta<OrdemServico>> update(@PathVariable("id")long id, @RequestBody OrdemServico newOrdemServico) {
+        Optional<OrdemServico> talvezOrdemServico = ordemServicoService.findById(id);
         Resposta<OrdemServico> resposta = new Resposta<OrdemServico>();
-        if (!talvezAgenda.isPresent()) {
+        if (!talvezOrdemServico.isPresent()) {
             return naoEncontrado(resposta);
         }
 
-        Agenda oldAgenda = talvezAgenda.get();
+        OrdemServico oldOrdemServico = talvezOrdemServico.get();
 
-        oldAgenda.setDescricao(newAgenda.getDescricao());
-        oldAgenda.setData(newAgenda.getData());
-        oldAgenda.setHora(newAgenda.getHora());
+        oldOrdemServico.setDescricao(newOrdemServico.getDescricao());
+        oldOrdemServico.setData(newOrdemServico.getData());
+        oldOrdemServico.setHora(newOrdemServico.getHora());
 
-        Agenda agendaA = agendaService.save(oldAgenda);
+        OrdemServico ordemServicoA = ordemServicoService.save(oldOrdemServico);
 
-        if(agendaA == null) {
+        if(ordemServicoA == null) {
             resposta.setStatus(3);
-            resposta.setMensagem("Agenda não foi alterada!");
+            resposta.setMensagem("Ordem de serviço não foi alterada!");
             return new ResponseEntity<Resposta<OrdemServico>>(resposta, HttpStatus.OK);
         }
         resposta.setStatus(1);
-        resposta.setData(agendaA);
-        resposta.setMensagem("Agenda alterada com sucesso!");
+        resposta.setData(ordemServicoA);
+        resposta.setMensagem("Ordem de serviço alterada com sucesso!");
         return new ResponseEntity<Resposta<OrdemServico>>(resposta, HttpStatus.OK);
     }
 
     @DeleteMapping(path="/{id}")
     public ResponseEntity<Resposta<OrdemServico>> delete(@PathVariable("id") long id){
-        Optional<OrdemServico> talvezAgenda = agendaService.findById(id);
+        Optional<OrdemServico> talvezOrdemServico = ordemServicoService.findById(id);
         Resposta<OrdemServico> resposta = new Resposta<OrdemServico>();
-        if (!talvezAgenda.isPresent()) {
+        if (!talvezOrdemServico.isPresent()) {
             return naoEncontrado(resposta);
         }
 
-        agendaService.delete(talvezAgenda.get());
+        ordemServicoService.delete(talvezOrdemServico.get());
 
         resposta.setStatus(1);
-        resposta.setMensagem("Agenda excluída com sucesso!");
+        resposta.setMensagem("Ordem de serviço excluída com sucesso!");
 
         return new ResponseEntity<Resposta<OrdemServico>>(resposta, HttpStatus.OK);
     }
 
     private ResponseEntity<Resposta<OrdemServico>> naoEncontrado(Resposta<OrdemServico> resposta) {
         resposta.setStatus(2);
-        resposta.setMensagem("Agenda não encontrada!");
+        resposta.setMensagem("Ordem de serviço não encontrada!");
         return new ResponseEntity<Resposta<OrdemServico>>(resposta, HttpStatus.NOT_FOUND);
     }
 }

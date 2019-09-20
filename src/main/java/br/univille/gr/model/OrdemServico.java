@@ -37,7 +37,7 @@ public class OrdemServico {
     private Date alteracao;
 
     @NotNull()
-    @OneToOne(cascade= { CascadeType.PERSIST }, optional = false)
+    @OneToOne(cascade= { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Agenda agenda;
 
     @OneToMany(cascade = { CascadeType.ALL })
