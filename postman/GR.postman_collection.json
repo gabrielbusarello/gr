@@ -21,7 +21,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2Njg4MzAyNCwiaWF0IjoxNTY2ODY1MDI0fQ.A7hWq2SizdmLo8RDTdyIFewRs9mcDpXnQumb9T-mSwf-TF9R8NQ_1XRXA6WNv_F9b_e2JRQo8_d9PkvJf285Ew",
 								"type": "text"
 							}
 						],
@@ -166,6 +166,41 @@
 					"response": []
 				},
 				{
+					"name": "Atualizar Com Endereço",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2ODM0MjM4MSwiaWF0IjoxNTY4MzI0MzgxfQ.rx-Bf3EyC9XA_m1hgTcxoQmDEZHsPEq_9-oZfzdP51lJIHgtjW4VGojZir1zzG_e2F5S--5F-pwU9FlgxypxOw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cpf\": \"09180345905\",\n\t\"nome\": \"Gabriel Dezan Busarello\",\n\t\"email\": \"gabriel20053@gmail.com\",\n\t\"senha\": \"Gabriel\",\n\t\"telefone\": \"47996409108\",\n\t\"permissao\": \"I\",\n\t\"endereco\": {\n\t\t\"cep\": \"89226556\",\n\t\t\"logradouro\": \"Rua Sagitarius\",\n\t\t\"numero\": \"189\",\n\t\t\"complemento\": \"Não é obrigatório\",\n\t\t\"bairro\": \"Jardim Paraíso\",\n\t\t\"cidade\": \"Joinville\",\n\t\t\"estado\": \"SC\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Excluir",
 					"request": {
 						"method": "DELETE",
@@ -209,7 +244,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzM4NTIxNywiaWF0IjoxNTYzMzY3MjE3fQ.yaSSzTZd4ViwwjBNDNKxF6_eB3E9UYcrHZqUKWyv6ntfADN_Qa6r_GHU_7PtT-pe8GG9t9MNBOqXYxM8dXKLmQ",
 								"type": "text"
 							}
 						],
@@ -270,7 +305,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzM4NTIxNywiaWF0IjoxNTYzMzY3MjE3fQ.yaSSzTZd4ViwwjBNDNKxF6_eB3E9UYcrHZqUKWyv6ntfADN_Qa6r_GHU_7PtT-pe8GG9t9MNBOqXYxM8dXKLmQ",
 								"type": "text"
 							}
 						],
@@ -458,7 +493,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2ODM0MjM4MSwiaWF0IjoxNTY4MzI0MzgxfQ.rx-Bf3EyC9XA_m1hgTcxoQmDEZHsPEq_9-oZfzdP51lJIHgtjW4VGojZir1zzG_e2F5S--5F-pwU9FlgxypxOw",
 								"type": "text"
 							}
 						],
@@ -585,7 +620,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2NTkzMjM3NywiaWF0IjoxNTY1OTE0Mzc3fQ.QijSnORPa7mG0MQP1JwzkdkyLiWP2Em4hGtvjbvmJAz8StTYYzRhBfYKlHpt8-bZpYJ0FqY5XTbHZmoHpJUv4A",
 								"type": "text"
 							}
 						],
@@ -646,7 +681,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2NDM3MDU1OCwiaWF0IjoxNTY0MzUyNTU4fQ.FVMa9WRFRcUz3pPfB_pvZZ0PUDBIwBvvC0JDBsTejHmqZbyjrQuetPkrWeg06k7Ec-77Iy9sIUw1OH0UgG6lUw",
 								"type": "text"
 							}
 						],
@@ -727,6 +762,194 @@
 							"port": "8080",
 							"path": [
 								"ferramenta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ad57f05d-2d47-4138-a114-42e8aff4407e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "003dd8da-d716-4c11-8d39-09ea0c42b208",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Agendamento",
+			"item": [
+				{
+					"name": "Busca todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2ODA5MDg3MiwiaWF0IjoxNTY4MDcyODcyfQ.YtSYMtUF8AFAJPEYsDi8FK0e22dA56gEEJR5MS9sNX-w7fbilWJbeAIz9Br9yfAtu3_-Sk0h7TyAav5H5ye6XQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/agenda",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agenda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2ODA5MDg3MiwiaWF0IjoxNTY4MDcyODcyfQ.YtSYMtUF8AFAJPEYsDi8FK0e22dA56gEEJR5MS9sNX-w7fbilWJbeAIz9Br9yfAtu3_-Sk0h7TyAav5H5ye6XQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/agenda/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agenda",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2ODM0MjM4MSwiaWF0IjoxNTY4MzI0MzgxfQ.rx-Bf3EyC9XA_m1hgTcxoQmDEZHsPEq_9-oZfzdP51lJIHgtjW4VGojZir1zzG_e2F5S--5F-pwU9FlgxypxOw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\": \"Preciso de reparos no encanamento da minha casa.\",\n\t\"data\": \"2019-09-10\",\n\t\"hora\": \"09:00\",\n\t\"status\": \"P\",\n\t\"endereco\": {\n\t\t\"id\": 1\n\t}\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/agenda",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agenda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2ODA5MDg3MiwiaWF0IjoxNTY4MDcyODcyfQ.YtSYMtUF8AFAJPEYsDi8FK0e22dA56gEEJR5MS9sNX-w7fbilWJbeAIz9Br9yfAtu3_-Sk0h7TyAav5H5ye6XQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\": \"Preciso de reparos no encanamento da minha casa!!\",\n\t\"data\": \"2019-09-10\",\n\t\"hora\": \"09:00\",\n\t\"status\": \"P\",\n\t\"endereco\": {\n\t\t\"id\": 1\n\t}\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/agenda/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agenda",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2ODA5MDg3MiwiaWF0IjoxNTY4MDcyODcyfQ.YtSYMtUF8AFAJPEYsDi8FK0e22dA56gEEJR5MS9sNX-w7fbilWJbeAIz9Br9yfAtu3_-Sk0h7TyAav5H5ye6XQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/agenda/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agenda",
 								"1"
 							]
 						}
