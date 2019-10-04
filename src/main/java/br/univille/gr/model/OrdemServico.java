@@ -44,9 +44,6 @@ public class OrdemServico {
     @JoinColumn(name="ordem_servico_id")
     private List<Produto> produto = new ArrayList<Produto>();
 
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
-    private Usuario usuario;
-
     @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Usuario prestador;
@@ -65,14 +62,6 @@ public class OrdemServico {
 
     public void setProduto(List<Produto> produto) {
         this.produto = produto;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public Usuario getPrestador() {

@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OrdemServicoRepository extends JpaRepository<OrdemServico, Long> {
-    List<OrdemServico> findAllByUsuario(Usuario usuario);
-    Optional<OrdemServico> findByIdAndUsuario(long id, Usuario usuario);
+    List<OrdemServico> findAllByPrestador(Usuario usuario);
+    Optional<OrdemServico> findByIdAndPrestador(long id, Usuario usuario);
 }

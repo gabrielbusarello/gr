@@ -31,17 +31,17 @@ public class OrdemServicoServiceImpl implements OrdemServicoService {
 
     @Override
     public List<OrdemServico> getAll() {
-        return repository.findAllByUsuario(this.getUser());
+        return repository.findAllByPrestador(this.getUser());
     }
 
     @Override
     public Optional<OrdemServico> findById(long id) {
-        return repository.findByIdAndUsuario(id, this.getUser());
+        return repository.findByIdAndPrestador(id, this.getUser());
     }
 
     @Override
     public OrdemServico save(OrdemServico ordemServico) {
-        ordemServico.setUsuario(this.getUser());
+        ordemServico.setPrestador(this.getUser());
 
         if (ordemServico.getId() == 0) {
             ordemServico.setCriacao(new Date());
