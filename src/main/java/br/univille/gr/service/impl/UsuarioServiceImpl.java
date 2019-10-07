@@ -44,10 +44,10 @@ public class UsuarioServiceImpl implements UsuarioService {
     public Usuario save(Usuario usuario) {
         if (usuario.getId() == 0) {
             usuario.setCriacao(new Date());
+            usuario.setSenha(bcryptEncoder.encode(usuario.getSenha()));
         } else {
             usuario.setAlteracao(new Date());
         }
-        usuario.setSenha(bcryptEncoder.encode(usuario.getSenha()));
 
         return repository.save(usuario);
     }
