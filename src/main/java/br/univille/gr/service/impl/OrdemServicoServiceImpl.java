@@ -2,6 +2,7 @@ package br.univille.gr.service.impl;
 
 import br.univille.gr.model.OrdemServico;
 import br.univille.gr.model.Usuario;
+import br.univille.gr.repository.AgendaRepository;
 import br.univille.gr.repository.OrdemServicoRepository;
 import br.univille.gr.repository.UsuarioRepository;
 import br.univille.gr.service.OrdemServicoService;

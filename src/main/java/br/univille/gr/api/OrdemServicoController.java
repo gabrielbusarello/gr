@@ -1,5 +1,6 @@
 package br.univille.gr.api;
 
+import br.univille.gr.model.Agenda;
 import br.univille.gr.model.OrdemServico;
 import br.univille.gr.model.Produto;
 import br.univille.gr.service.OrdemServicoService;
@@ -48,6 +49,9 @@ public class OrdemServicoController {
 
     @PostMapping
     public ResponseEntity<Resposta<OrdemServico>> save(@RequestBody OrdemServico OrdemServico) {
+        Agenda agenda = OrdemServico.getAgenda();
+        agenda.setStatus('F');
+
         OrdemServico ordemServicoI = ordemServicoService.save(OrdemServico);
         Resposta<OrdemServico> resposta = new Resposta<OrdemServico>();
         if(OrdemServico == null) {
@@ -55,6 +59,7 @@ public class OrdemServicoController {
             resposta.setMensagem("Ordem de serviço não foi registrada!");
             return new ResponseEntity<Resposta<OrdemServico>>(resposta, HttpStatus.OK);
         }
+
         resposta.setStatus(1);
         resposta.setData(ordemServicoI);
         resposta.setMensagem("Ordem de serviço cadastrada com sucesso!");
