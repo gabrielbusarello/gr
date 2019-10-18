@@ -24,8 +24,8 @@ public class Servico {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
-    private Usuario usuario;
+//    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+//    private Usuario usuario;
 
     @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
@@ -75,13 +75,13 @@ public class Servico {
         this.alteracao = alteracao;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+//    public Usuario getUsuario() {
+//        return usuario;
+//    }
+//
+//    public void setUsuario(Usuario usuario) {
+//        this.usuario = usuario;
+//    }
 
     public OrdemServico getOrdemServico() {
         return ordemServico;

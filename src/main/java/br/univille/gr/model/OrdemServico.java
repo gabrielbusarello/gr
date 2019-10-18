@@ -40,9 +40,13 @@ public class OrdemServico {
     @OneToOne(cascade= { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Agenda agenda;
 
-    @OneToMany(cascade = { CascadeType.ALL })
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
     @JoinColumn(name="ordem_servico_id")
     private List<Produto> produto = new ArrayList<Produto>();
+
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
+    @JoinColumn(name="ordem_servico_id")
+    private List<Servico> servico = new ArrayList<Servico>();
 
     @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
@@ -62,6 +66,14 @@ public class OrdemServico {
 
     public void setProduto(List<Produto> produto) {
         this.produto = produto;
+    }
+
+    public List<Servico> getServico() {
+        return servico;
+    }
+
+    public void setServico(List<Servico> servico) {
+        this.servico = servico;
     }
 
     public Usuario getPrestador() {

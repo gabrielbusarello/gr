@@ -1,5 +1,7 @@
 package br.univille.gr.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -27,11 +29,11 @@ public class Produto {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
-    private Usuario usuario;
+//    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+//    private Usuario usuario;
 
-    @NotNull()
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonIgnore()
     private OrdemServico ordemServico;
 
     public long getId() {
@@ -82,13 +84,13 @@ public class Produto {
         this.alteracao = alteracao;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+//    public Usuario getUsuario() {
+//        return usuario;
+//    }
+//
+//    public void setUsuario(Usuario usuario) {
+//        this.usuario = usuario;
+//    }
 
     public OrdemServico getOrdemServico() {
         return ordemServico;

@@ -1,6 +1,7 @@
 package br.univille.gr.api;
 
 import br.univille.gr.model.OrdemServico;
+import br.univille.gr.model.Produto;
 import br.univille.gr.service.OrdemServicoService;
 import br.univille.gr.util.Resposta;
 import org.aspectj.weaver.ast.Or;
@@ -73,6 +74,12 @@ public class OrdemServicoController {
         oldOrdemServico.setDescricao(newOrdemServico.getDescricao());
         oldOrdemServico.setData(newOrdemServico.getData());
         oldOrdemServico.setHora(newOrdemServico.getHora());
+        oldOrdemServico.setProduto(newOrdemServico.getProduto());
+        oldOrdemServico.setServico(newOrdemServico.getServico());
+
+//        for (Produto umProduto:newOrdemServico.getProduto()) {
+//            umProduto.setOrdemServico(oldOrdemServico);
+//        }
 
         OrdemServico ordemServicoA = ordemServicoService.save(oldOrdemServico);
 
