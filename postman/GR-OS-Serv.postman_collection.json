@@ -1,0 +1,1248 @@
+{
+	"info": {
+		"_postman_id": "0c083acf-a7cb-4c79-8943-4eddd9533d63",
+		"name": "GR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuário",
+			"item": [
+				{
+					"name": "Busca todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2Njg4MzAyNCwiaWF0IjoxNTY2ODY1MDI0fQ.A7hWq2SizdmLo8RDTdyIFewRs9mcDpXnQumb9T-mSwf-TF9R8NQ_1XRXA6WNv_F9b_e2JRQo8_d9PkvJf285Ew",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/usuario/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca com filtro",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/usuario/?user=09180345905&password=Gabriel",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								""
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "09180345905"
+								},
+								{
+									"key": "password",
+									"value": "Gabriel"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzEyODM4OSwiaWF0IjoxNTYzMTEwMzg5fQ.XwhzhwgTWGMy0nGrpj42pBL9itktoW7oZx--mudxhhyQ3sgppo_M69Xcldxta_ZT6MUb61W3WxDV7L3nYP09Vg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/usuario/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cpf\": \"09180345905\",\n\t\"nome\": \"Gabriel Dezan Busarello\",\n\t\"email\": \"gabriel20053@gmail.com\",\n\t\"senha\": \"Gabriel\",\n\t\"telefone\": \"47996409108\",\n\t\"permissao\": \"A\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cpf\": \"09180345905\",\n\t\"nome\": \"Gabriel Dezan Busarello\",\n\t\"email\": \"gabriel20053@gmail.com\",\n\t\"senha\": \"Gabriel\",\n\t\"telefone\": \"47996409108\",\n\t\"permissao\": \"I\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Com Endereço",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTU3ODM2Mjk1MSIsImV4cCI6MTU3MTcyMTE5MiwiaWF0IjoxNTcxNzAzMTkyfQ.Km62qA5J-Nf9I-cVONhoaMhEv_3ebpP9OT5RI15yu-Gb15cNSQMeJqX6zugSedY0bnOaQG0oUWs7_v1OvwaWhQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cpf\": \"09180345905\",\n\t\"nome\": \"Gabriel Dezan Busarello\",\n\t\"email\": \"gabriel20053@gmail.com\",\n\t\"senha\": \"Gabriel\",\n\t\"telefone\": \"47996409108\",\n\t\"permissao\": \"I\",\n\t\"endereco\": {\n\t\t\"cep\": \"89226556\",\n\t\t\"logradouro\": \"Rua Sagitarius\",\n\t\t\"numero\": \"189\",\n\t\t\"complemento\": \"Não é obrigatório\",\n\t\t\"bairro\": \"Jardim Paraíso\",\n\t\t\"cidade\": \"Joinville\",\n\t\t\"estado\": \"SC\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/usuario/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/usuario/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Despesa",
+			"item": [
+				{
+					"name": "Busca todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzM4NTIxNywiaWF0IjoxNTYzMzY3MjE3fQ.yaSSzTZd4ViwwjBNDNKxF6_eB3E9UYcrHZqUKWyv6ntfADN_Qa6r_GHU_7PtT-pe8GG9t9MNBOqXYxM8dXKLmQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/despesa",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/despesa/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzM4NTIxNywiaWF0IjoxNTYzMzY3MjE3fQ.yaSSzTZd4ViwwjBNDNKxF6_eB3E9UYcrHZqUKWyv6ntfADN_Qa6r_GHU_7PtT-pe8GG9t9MNBOqXYxM8dXKLmQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Conta de Luz\",\n\t\"descricao\": \"Conta de luz referente ao mês de Junho de 2019\",\n\t\"data\": \"2019-07-10\",\n\t\"hora\": \"10:00:00\",\n\t\"valor\": 35.99\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/despesa",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Conta de Luz\",\n\t\"descricao\": \"Conta de luz referente ao mês de Junho de 2019\",\n\t\"data\": \"2019-07-09\",\n\t\"hora\": \"10:00:00\",\n\t\"valor\": 105.99\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/despesa/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/despesa/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"despesa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ad57f05d-2d47-4138-a114-42e8aff4407e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "003dd8da-d716-4c11-8d39-09ea0c42b208",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tipo de Serviço",
+			"item": [
+				{
+					"name": "Busca todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/tipo-servico",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tipo-servico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/tipo-servico/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tipo-servico",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTU3ODM2Mjk1MSIsImV4cCI6MTU3MTcyMTE5MiwiaWF0IjoxNTcxNzAzMTkyfQ.Km62qA5J-Nf9I-cVONhoaMhEv_3ebpP9OT5RI15yu-Gb15cNSQMeJqX6zugSedY0bnOaQG0oUWs7_v1OvwaWhQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Reparo de Encanamentos\",\n\t\"descricao\": \"Valor padrão para o serviço de reparo de encanamentos\",\n\t\"valorEstimado\": 60\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/tipo-servico",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tipo-servico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Reparo de Encanamentos\",\n\t\"descricao\": \"Valor padrão para o serviço de reparo de encanamentos\",\n\t\"valorEstimado\": 55.00\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/tipo-servico/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tipo-servico",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/tipo-servico/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tipo-servico",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ad57f05d-2d47-4138-a114-42e8aff4407e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "003dd8da-d716-4c11-8d39-09ea0c42b208",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Ferramenta",
+			"item": [
+				{
+					"name": "Busca todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2NTkzMjM3NywiaWF0IjoxNTY1OTE0Mzc3fQ.QijSnORPa7mG0MQP1JwzkdkyLiWP2Em4hGtvjbvmJAz8StTYYzRhBfYKlHpt8-bZpYJ0FqY5XTbHZmoHpJUv4A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/ferramenta",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ferramenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/ferramenta/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ferramenta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2NDM3MDU1OCwiaWF0IjoxNTY0MzUyNTU4fQ.FVMa9WRFRcUz3pPfB_pvZZ0PUDBIwBvvC0JDBsTejHmqZbyjrQuetPkrWeg06k7Ec-77Iy9sIUw1OH0UgG6lUw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Furadeira\",\n\t\"dtUltimoReparo\": \"2019-07-15\",\n\t\"proximoReparo\": 60\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/ferramenta",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ferramenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Furadeira\",\n\t\"dtUltimoReparo\": \"2019-07-15\",\n\t\"proximoReparo\": 50\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/ferramenta/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ferramenta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/ferramenta/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ferramenta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ad57f05d-2d47-4138-a114-42e8aff4407e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "003dd8da-d716-4c11-8d39-09ea0c42b208",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Agendamento",
+			"item": [
+				{
+					"name": "Busca todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2ODA5MDg3MiwiaWF0IjoxNTY4MDcyODcyfQ.YtSYMtUF8AFAJPEYsDi8FK0e22dA56gEEJR5MS9sNX-w7fbilWJbeAIz9Br9yfAtu3_-Sk0h7TyAav5H5ye6XQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/agenda",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agenda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTU3ODM2Mjk1MSIsImV4cCI6MTU3MTM3NzYzMywiaWF0IjoxNTcxMzU5NjMzfQ.siF7aj8Mj0-kexEct2CbtOSbIIi1w0-oWP7dHa5XCxWkKHklgrPj29EmKleCCx1b6dtDUdvi2ajXLJnNodUgzQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/agenda/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agenda",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTU3ODM2Mjk1MSIsImV4cCI6MTU3MTcyMTE5MiwiaWF0IjoxNTcxNzAzMTkyfQ.Km62qA5J-Nf9I-cVONhoaMhEv_3ebpP9OT5RI15yu-Gb15cNSQMeJqX6zugSedY0bnOaQG0oUWs7_v1OvwaWhQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\": \"Preciso de reparos no encanamento da minha casa.\",\n\t\"data\": \"2019-09-10\",\n\t\"hora\": \"09:00\",\n\t\"status\": \"P\",\n\t\"endereco\": {\n\t\t\"id\": 1\n\t}\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/agenda",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agenda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2ODA5MDg3MiwiaWF0IjoxNTY4MDcyODcyfQ.YtSYMtUF8AFAJPEYsDi8FK0e22dA56gEEJR5MS9sNX-w7fbilWJbeAIz9Br9yfAtu3_-Sk0h7TyAav5H5ye6XQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricao\": \"Preciso de reparos no encanamento da minha casa!!\",\n\t\"data\": \"2019-09-10\",\n\t\"hora\": \"09:00\",\n\t\"status\": \"P\",\n\t\"endereco\": {\n\t\t\"id\": 1\n\t}\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/agenda/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agenda",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2ODA5MDg3MiwiaWF0IjoxNTY4MDcyODcyfQ.YtSYMtUF8AFAJPEYsDi8FK0e22dA56gEEJR5MS9sNX-w7fbilWJbeAIz9Br9yfAtu3_-Sk0h7TyAav5H5ye6XQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/agenda/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agenda",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ad57f05d-2d47-4138-a114-42e8aff4407e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "003dd8da-d716-4c11-8d39-09ea0c42b208",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Ordem de Serviço",
+			"item": [
+				{
+					"name": "Busca todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU3MDE2NzIxMiwiaWF0IjoxNTcwMTQ5MjEyfQ.lzIwrdUBdSOYsP_WKgMFWuQjia7ThiQbtSXDXJau6zKWet9KPYM6bVzlyLZCxt0vuLe0ZD0GeC7T-aytLbrx1g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/ordem-servico",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ordem-servico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2MzIxMzcwMCwiaWF0IjoxNTYzMTk1NzAwfQ.3ykQyHryyhJToSBmmvJkRcAGc4TcCjR-BIBof859Z61tZcR81eckH-8OfLmaKWDeiv6BvF9Jl8NaFRxYIBgCBQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/ordem-servico/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ordem-servico",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTU3ODM2Mjk1MSIsImV4cCI6MTU3MTcyMTE5MiwiaWF0IjoxNTcxNzAzMTkyfQ.Km62qA5J-Nf9I-cVONhoaMhEv_3ebpP9OT5RI15yu-Gb15cNSQMeJqX6zugSedY0bnOaQG0oUWs7_v1OvwaWhQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"maoDeObra\": 60,\n\t\"descricao\": \"Arrumar cano\",\n\t\"data\": \"2019-09-10\",\n\t\"hora\": \"09:00\",\n\t\"status\": \"P\",\n\t\"agenda\": {\n\t\t\"id\": 1\n\t}\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/ordem-servico",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ordem-servico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2ODk1ODAwMSwiaWF0IjoxNTY4OTQwMDAxfQ.TkFSTJrwB9Y7E4kgPbkscaZ78vd8YE-936bIUmABg9vxnVs4nd-LDvlLWY-mHgr8AuQv_lSRyBh93oy6lMH0pQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"maoDeObra\": 60,\n\t\"descricao\": \"Arrumar pia\",\n\t\"data\": \"2019-09-10\",\n\t\"hora\": \"09:00\",\n\t\"status\": \"P\",\n\t\"agenda\": {\n\t\t\"id\": 1\n\t}\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/ordem-servico/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ordem-servico",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU2ODk1ODAwMSwiaWF0IjoxNTY4OTQwMDAxfQ.TkFSTJrwB9Y7E4kgPbkscaZ78vd8YE-936bIUmABg9vxnVs4nd-LDvlLWY-mHgr8AuQv_lSRyBh93oy6lMH0pQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/ordem-servico/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ordem-servico",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar com Produto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTE4MDM0NTkwNSIsImV4cCI6MTU3MDE2NzIxMiwiaWF0IjoxNTcwMTQ5MjEyfQ.lzIwrdUBdSOYsP_WKgMFWuQjia7ThiQbtSXDXJau6zKWet9KPYM6bVzlyLZCxt0vuLe0ZD0GeC7T-aytLbrx1g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"maoDeObra\": 60,\n\t\"descricao\": \"Arrumar cano\",\n\t\"data\": \"2019-09-30\",\n\t\"hora\": \"12:00\",\n\t\"status\": \"P\",\n\t\"agenda\": {\n\t\t\"id\": 1\n\t},\n\t\"produto\": [\n\t\t{\n\t\t\t\"nome\": \"Cano 20 pol\",\n\t\t\t\"valor\": 35.50,\n\t\t\t\"quantidade\": 2,\n\t\t\t\"usuario\": {\n\t\t\t\t\"id\": 1\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"nome\": \"Veda rosca\",\n\t\t\t\"valor\": 8.20,\n\t\t\t\"quantidade\": 1,\n\t\t\t\"usuario\": {\n\t\t\t\t\"id\": 1\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"nome\": \"Joelho 20 pol\",\n\t\t\t\"valor\": 1.80,\n\t\t\t\"quantidade\": 4,\n\t\t\t\"usuario\": {\n\t\t\t\t\"id\": 1\n\t\t\t}\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/ordem-servico/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ordem-servico",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar com Serviço",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTU3ODM2Mjk1MSIsImV4cCI6MTU3MTcyMTE5MiwiaWF0IjoxNTcxNzAzMTkyfQ.Km62qA5J-Nf9I-cVONhoaMhEv_3ebpP9OT5RI15yu-Gb15cNSQMeJqX6zugSedY0bnOaQG0oUWs7_v1OvwaWhQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"maoDeObra\": 60,\n\t\"descricao\": \"Arrumar cano\",\n\t\"data\": \"2019-09-30\",\n\t\"hora\": \"12:00\",\n\t\"status\": \"P\",\n\t\"agenda\": {\n\t\t\"id\": 1\n\t},\n\t\"servico\": [\n\t\t{\n\t\t\t\"descricao\": \"Manutenção\",\n\t\t\t\"tempoGasto\": \"01:30\",\n\t\t\t\"tipoServico\": {\n\t\t\t\t\"id\": 1\n\t\t\t}\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/ordem-servico/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ordem-servico",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"09578362951\",\n\t\"password\": \"Rodrigo\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
