@@ -32,8 +32,11 @@ public class Agenda {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date alteracao;
 
-    @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+    @ManyToOne(cascade = { CascadeType.REFRESH }, optional = false)
     private Usuario usuario;
+
+    @ManyToOne(cascade = { CascadeType.REFRESH })
+    private Usuario prestador;
 
     @NotNull()
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
@@ -121,5 +124,13 @@ public class Agenda {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Usuario getPrestador() {
+        return prestador;
+    }
+
+    public void setPrestador(Usuario prestador) {
+        this.prestador = prestador;
     }
 }

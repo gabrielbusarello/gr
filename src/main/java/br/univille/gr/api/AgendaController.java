@@ -19,7 +19,10 @@ public class AgendaController {
     private AgendaService agendaService;
 
     @GetMapping
-    public ResponseEntity<Resposta<List<Agenda>>> listarAgendas() {
+    public ResponseEntity<Resposta<List<Agenda>>> listarAgendas(@RequestParam char status, @RequestParam long idPrestador) {
+        if (status != ' ' || idPrestador != 0) {
+
+        }
         List<Agenda> lista = agendaService.getAll();
         Resposta<List<Agenda>> resposta = new Resposta<List<Agenda>>();
         if (lista.isEmpty()) {
@@ -73,6 +76,37 @@ public class AgendaController {
         oldAgenda.setDescricao(newAgenda.getDescricao());
         oldAgenda.setData(newAgenda.getData());
         oldAgenda.setHora(newAgenda.getHora());
+
+        Agenda agendaA = agendaService.save(oldAgenda);
+
+        if(agendaA == null) {
+            resposta.setStatus(3);
+            resposta.setMensagem("Agenda não foi alterada!");
+            return new ResponseEntity<Resposta<Agenda>>(resposta, HttpStatus.OK);
+        }
+        resposta.setStatus(1);
+        resposta.setData(agendaA);
+        resposta.setMensagem("Agenda alterada com sucesso!");
+        return new ResponseEntity<Resposta<Agenda>>(resposta, HttpStatus.OK);
+    }
+
+    @PatchMapping(path="/{id}")
+    public ResponseEntity<Resposta<Agenda>> updatePartial(@PathVariable("id")long id, @RequestBody Agenda updateAgenda) {
+        Optional<Agenda> talvezAgenda = agendaService.findById(id);
+        Resposta<Agenda> resposta = new Resposta<Agenda>();
+        if (!talvezAgenda.isPresent()) {
+            return naoEncontrado(resposta);
+        }
+
+        Agenda oldAgenda = talvezAgenda.get();
+
+        if (updateAgenda.getStatus() != ' ') {
+            oldAgenda.setStatus(updateAgenda.getStatus());
+        }
+
+        if (updateAgenda.getPrestador() != null) {
+            oldAgenda.setPrestador(updateAgenda.getPrestador());
+        }
 
         Agenda agendaA = agendaService.save(oldAgenda);
 
