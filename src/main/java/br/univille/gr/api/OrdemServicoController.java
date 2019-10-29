@@ -51,6 +51,7 @@ public class OrdemServicoController {
     public ResponseEntity<Resposta<OrdemServico>> save(@RequestBody OrdemServico OrdemServico) {
         Agenda agenda = OrdemServico.getAgenda();
         agenda.setStatus('F');
+        // Fazer o salvamento da agenda pelo serviço dela
 
         OrdemServico ordemServicoI = ordemServicoService.save(OrdemServico);
         Resposta<OrdemServico> resposta = new Resposta<OrdemServico>();

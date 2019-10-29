@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface AgendaRepository extends JpaRepository<Agenda, Long> {
     List<Agenda> findAllByUsuario(Usuario usuario);
     Optional<Agenda> findByIdAndUsuario(long id, Usuario usuario);
+    List<Agenda> findAllByStatusAndPrestador(char status, Usuario prestador);
 }

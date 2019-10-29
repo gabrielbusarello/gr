@@ -1,7 +1,9 @@
 package br.univille.gr.api;
 
 import br.univille.gr.model.Agenda;
+import br.univille.gr.model.Usuario;
 import br.univille.gr.service.AgendaService;
+import br.univille.gr.service.UsuarioService;
 import br.univille.gr.util.Resposta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,12 +20,18 @@ public class AgendaController {
     @Autowired
     private AgendaService agendaService;
 
-    @GetMapping
-    public ResponseEntity<Resposta<List<Agenda>>> listarAgendas(@RequestParam char status, @RequestParam long idPrestador) {
-        if (status != ' ' || idPrestador != 0) {
+    @Autowired
+    private UsuarioService usuarioService;
 
+    @GetMapping
+    public ResponseEntity<Resposta<List<Agenda>>> listarAgendas(@RequestParam(required = false) Character status, @RequestParam(required = false) Long idPrestador) {
+        List<Agenda> lista = null;
+        if (status != null && idPrestador != null) {
+            Optional<Usuario> prestador = usuarioService.findById(idPrestador);
+            lista = agendaService.getAllByStatusAndPrestador(status, prestador.get());
+        } else {
+            lista = agendaService.getAll();
         }
-        List<Agenda> lista = agendaService.getAll();
         Resposta<List<Agenda>> resposta = new Resposta<List<Agenda>>();
         if (lista.isEmpty()) {
             resposta.setStatus(2);
