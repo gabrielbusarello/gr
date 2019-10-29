@@ -25,7 +25,7 @@ public class Mensagem {
     private Usuario usuario;
 
     @ManyToOne(cascade = { CascadeType.REFRESH} )
-    @JsonIgnore()
+    //@JsonIgnore()
     private Agenda agenda;
 
     public long getId() {

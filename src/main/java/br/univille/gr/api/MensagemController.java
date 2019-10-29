@@ -3,6 +3,7 @@ package br.univille.gr.api;
 import br.univille.gr.model.Agenda;
 import br.univille.gr.model.Despesa;
 import br.univille.gr.model.Mensagem;
+import br.univille.gr.service.AgendaService;
 import br.univille.gr.service.DespesaService;
 import br.univille.gr.service.MensagemService;
 import br.univille.gr.util.Resposta;
@@ -21,11 +22,22 @@ public class MensagemController {
     @Autowired
     MensagemService mensagemService;
 
+    @Autowired
+    private AgendaService agendaService;
+
     @GetMapping
     public ResponseEntity<Resposta<List<Mensagem>>> listarMensagens(@RequestParam long idAgenda) {
-        // Mudar para findbyid
-        List<Mensagem> lista = mensagemService.getAll();
+        Optional<Agenda> agenda = agendaService.findById(idAgenda);
+
         Resposta<List<Mensagem>> resposta = new Resposta<List<Mensagem>>();
+
+        if (!agenda.isPresent()){
+            resposta.setStatus(3);
+            resposta.setMensagem("Agenda não existente!");
+        }
+
+        List<Mensagem> lista = mensagemService.findByAgenda(agenda.get());
+
         if (lista.isEmpty()) {
             resposta.setStatus(2);
             resposta.setMensagem("Não há registros!");
