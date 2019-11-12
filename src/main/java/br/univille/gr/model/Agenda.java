@@ -1,5 +1,7 @@
 package br.univille.gr.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -41,6 +43,7 @@ public class Agenda {
 
     @OneToMany(cascade = { CascadeType.ALL })
     @JoinColumn(name="agenda_id")
+    //@JsonIgnore()
     private List<Mensagem> mensagem = new ArrayList<Mensagem>();
 
     public long getId() {

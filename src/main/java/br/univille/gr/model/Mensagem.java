@@ -1,5 +1,7 @@
 package br.univille.gr.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -21,6 +23,10 @@ public class Mensagem {
 
     @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
     private Usuario usuario;
+
+    @ManyToOne(cascade = { CascadeType.REFRESH} )
+    //@JsonIgnore()
+    private Agenda agenda;
 
     public long getId() {
         return id;
@@ -53,4 +59,8 @@ public class Mensagem {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public Agenda getAgenda(){ return agenda; }
+
+    public void setAgenda(Agenda agenda) { this.agenda = agenda; }
 }
