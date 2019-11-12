@@ -20,7 +20,7 @@ import java.util.Optional;
 public class MensagemController {
 
     @Autowired
-    MensagemService mensagemService;
+    private MensagemService mensagemService;
 
     @Autowired
     private AgendaService agendaService;
@@ -37,6 +37,10 @@ public class MensagemController {
         }
 
         List<Mensagem> lista = mensagemService.findByAgenda(agenda.get());
+
+        for (int i = 0; i < lista.size(); i++){
+            lista.get(i).setAgenda(null);
+        }
 
         if (lista.isEmpty()) {
             resposta.setStatus(2);

@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface MensagemRepository extends JpaRepository<Mensagem, Long> {
     List<Mensagem> findAllByUsuario(Usuario usuario);
     Optional<Mensagem> findByIdAndUsuario(long id, Usuario usuario);
-    List<Mensagem> findByAllAgenda(Agenda agenda);
+    List<Mensagem> findAllByAgenda(Agenda agenda);
 }

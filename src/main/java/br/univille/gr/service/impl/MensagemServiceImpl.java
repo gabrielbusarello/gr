@@ -3,7 +3,6 @@ package br.univille.gr.service.impl;
 import br.univille.gr.model.Agenda;
 import br.univille.gr.model.Mensagem;
 import br.univille.gr.model.Usuario;
-import br.univille.gr.repository.AgendaRepository;
 import br.univille.gr.repository.MensagemRepository;
 import br.univille.gr.repository.UsuarioRepository;
 import br.univille.gr.service.MensagemService;
@@ -59,6 +58,6 @@ public class MensagemServiceImpl implements MensagemService {
 
     @Override
     public List<Mensagem> findByAgenda(Agenda agenda) {
-        return repository.findByAllAgenda(agenda);
+        return repository.findAllByAgenda(agenda);
     }
 }
