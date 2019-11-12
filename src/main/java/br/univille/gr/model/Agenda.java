@@ -19,7 +19,7 @@ public class Agenda {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String descricao;
     @NotNull()
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "DATE")
     private Date data;
     @NotNull()
     @Column(nullable = false, columnDefinition = "TIME")

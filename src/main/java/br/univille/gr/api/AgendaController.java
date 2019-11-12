@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +29,7 @@ public class AgendaController {
         List<Agenda> lista = null;
         if (status != null && idPrestador != null) {
             Optional<Usuario> prestador = usuarioService.findById(idPrestador);
-            lista = agendaService.getAllByStatusAndPrestador(status, prestador.get());
+            lista = agendaService.getAllByStatusAndPrestadorData(status, prestador.get(), new Date());
         } else {
             lista = agendaService.getAll();
         }

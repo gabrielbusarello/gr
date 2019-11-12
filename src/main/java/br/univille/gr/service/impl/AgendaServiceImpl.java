@@ -43,6 +43,11 @@ public class AgendaServiceImpl implements AgendaService {
     }
 
     @Override
+    public List<Agenda> getAllByStatusAndPrestadorData(char status, Usuario prestador, Date data) {
+        return repository.findAllByStatusAndPrestadorAndDataIsLessThanEqual(status, prestador, data);
+    }
+
+    @Override
     public Optional<Agenda> findById(long id) {
         return repository.findByIdAndUsuario(id, this.getUser());
     }
