@@ -1,13 +1,16 @@
 package br.univille.gr.api;
 
 import br.univille.gr.model.Agenda;
+import br.univille.gr.model.Usuario;
 import br.univille.gr.service.AgendaService;
+import br.univille.gr.service.UsuarioService;
 import br.univille.gr.util.Resposta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,9 +21,18 @@ public class AgendaController {
     @Autowired
     private AgendaService agendaService;
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     @GetMapping
-    public ResponseEntity<Resposta<List<Agenda>>> listarAgendas() {
-        List<Agenda> lista = agendaService.getAll();
+    public ResponseEntity<Resposta<List<Agenda>>> listarAgendas(@RequestParam(required = false) Character status, @RequestParam(required = false) Long idPrestador) {
+        List<Agenda> lista = null;
+        if (status != null && idPrestador != null) {
+            Optional<Usuario> prestador = usuarioService.findById(idPrestador);
+            lista = agendaService.getAllByStatusAndPrestadorData(status, prestador.get(), new Date());
+        } else {
+            lista = agendaService.getAll();
+        }
         Resposta<List<Agenda>> resposta = new Resposta<List<Agenda>>();
         if (lista.isEmpty()) {
             resposta.setStatus(2);
@@ -73,6 +85,37 @@ public class AgendaController {
         oldAgenda.setDescricao(newAgenda.getDescricao());
         oldAgenda.setData(newAgenda.getData());
         oldAgenda.setHora(newAgenda.getHora());
+
+        Agenda agendaA = agendaService.save(oldAgenda);
+
+        if(agendaA == null) {
+            resposta.setStatus(3);
+            resposta.setMensagem("Agenda não foi alterada!");
+            return new ResponseEntity<Resposta<Agenda>>(resposta, HttpStatus.OK);
+        }
+        resposta.setStatus(1);
+        resposta.setData(agendaA);
+        resposta.setMensagem("Agenda alterada com sucesso!");
+        return new ResponseEntity<Resposta<Agenda>>(resposta, HttpStatus.OK);
+    }
+
+    @PatchMapping(path="/{id}")
+    public ResponseEntity<Resposta<Agenda>> updatePartial(@PathVariable("id")long id, @RequestBody Agenda updateAgenda) {
+        Optional<Agenda> talvezAgenda = agendaService.findById(id);
+        Resposta<Agenda> resposta = new Resposta<Agenda>();
+        if (!talvezAgenda.isPresent()) {
+            return naoEncontrado(resposta);
+        }
+
+        Agenda oldAgenda = talvezAgenda.get();
+
+        if (updateAgenda.getStatus() != ' ') {
+            oldAgenda.setStatus(updateAgenda.getStatus());
+        }
+
+        if (updateAgenda.getPrestador() != null) {
+            oldAgenda.setPrestador(updateAgenda.getPrestador());
+        }
 
         Agenda agendaA = agendaService.save(oldAgenda);
 
