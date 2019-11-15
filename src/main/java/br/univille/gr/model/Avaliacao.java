@@ -26,7 +26,7 @@ public class Avaliacao {
     private Usuario usuario;
 
     @NotNull()
-    @OneToOne(cascade= { CascadeType.PERSIST }, optional = false)
+    @OneToOne(cascade= { CascadeType.REFRESH }, optional = false)
     private OrdemServico ordemServico;
 
     public long getId() {
