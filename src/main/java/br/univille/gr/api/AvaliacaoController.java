@@ -1,9 +1,10 @@
 package br.univille.gr.api;
 
-import br.univille.gr.model.Avaliacao;
-import br.univille.gr.model.Ferramenta;
+import br.univille.gr.model.*;
+import br.univille.gr.service.AgendaService;
 import br.univille.gr.service.AvaliacaoService;
 import br.univille.gr.service.FerramentaService;
+import br.univille.gr.service.OrdemServicoService;
 import br.univille.gr.util.Resposta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,10 +21,25 @@ public class AvaliacaoController {
     @Autowired
     private AvaliacaoService avaliacaoService;
 
+    @Autowired
+    private OrdemServicoService ordemServicoService;
+
     @GetMapping
-    public ResponseEntity<Resposta<List<Avaliacao>>> listarAvaliacaos() {
-        List<Avaliacao> lista = avaliacaoService.getAll();
+    public ResponseEntity<Resposta<List<Avaliacao>>> listarAvaliacaos(@RequestParam long idOrdemServico) {
+        Optional<OrdemServico> ordemServico = ordemServicoService.findById(idOrdemServico);
+
         Resposta<List<Avaliacao>> resposta = new Resposta<List<Avaliacao>>();
+
+        if (!ordemServico.isPresent()){
+            resposta.setStatus(3);
+            resposta.setMensagem("Avaliação não existente!");
+        }
+
+        List<Avaliacao> lista = avaliacaoService.findByOrdemServico(ordemServico.get());
+
+        for (int i = 0; i < lista.size(); i++){
+            lista.get(i).setOrdemServico(null);
+        }
 
         if (lista.isEmpty()) {
             resposta.setStatus(2);

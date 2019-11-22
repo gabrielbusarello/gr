@@ -1,8 +1,6 @@
 package br.univille.gr.service.impl;
 
-import br.univille.gr.model.Avaliacao;
-import br.univille.gr.model.Despesa;
-import br.univille.gr.model.Usuario;
+import br.univille.gr.model.*;
 import br.univille.gr.repository.AvaliacaoRepository;
 import br.univille.gr.repository.DespesaRepository;
 import br.univille.gr.repository.UsuarioRepository;
@@ -56,5 +54,10 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
     @Override
     public void delete(Avaliacao avaliacao) {
         repository.delete(avaliacao);
+    }
+
+    @Override
+    public List<Avaliacao> findByOrdemServico(OrdemServico ordemServico) {
+        return repository.findAllByOrdemServico(ordemServico);
     }
 }
