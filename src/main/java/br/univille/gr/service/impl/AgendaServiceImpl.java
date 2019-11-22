@@ -34,7 +34,13 @@ public class AgendaServiceImpl implements AgendaService {
 
     @Override
     public List<Agenda> getAll() {
-        return repository.findAllByUsuario(this.getUser());
+        if (getUser().getPermissao() == 'I') {
+            return repository.findAll();
+        } else if (getUser().getPermissao() == 'P') {
+            return repository.findAllByStatusIsNot('A');
+        } else {
+            return repository.findAllByUsuario(this.getUser());
+        }
     }
 
     @Override
@@ -49,7 +55,11 @@ public class AgendaServiceImpl implements AgendaService {
 
     @Override
     public Optional<Agenda> findById(long id) {
-        return repository.findByIdAndUsuario(id, this.getUser());
+        if (getUser().getPermissao() == 'I' || getUser().getPermissao() == 'P') {
+            return repository.findById(id);
+        } else {
+            return repository.findByIdAndUsuario(id, this.getUser());
+        }
     }
 
     @Override

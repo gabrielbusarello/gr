@@ -46,7 +46,7 @@ public class Agenda {
 
     @OneToMany(cascade = { CascadeType.ALL })
     @JoinColumn(name="agenda_id")
-    //@JsonIgnore()
+    @JsonIgnore()
     private List<Mensagem> mensagem = new ArrayList<Mensagem>();
 
     public long getId() {
