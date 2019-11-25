@@ -3,6 +3,7 @@ package br.univille.gr.api;
 import br.univille.gr.model.Agenda;
 import br.univille.gr.model.OrdemServico;
 import br.univille.gr.model.Produto;
+import br.univille.gr.service.AgendaService;
 import br.univille.gr.service.OrdemServicoService;
 import br.univille.gr.util.Resposta;
 import org.aspectj.weaver.ast.Or;
@@ -19,6 +20,8 @@ import java.util.Optional;
 public class OrdemServicoController {
     @Autowired
     private OrdemServicoService ordemServicoService;
+    @Autowired
+    private AgendaService agendaService;
 
     @GetMapping
     public ResponseEntity<Resposta<List<OrdemServico>>> listarOrdemServico() {
@@ -49,11 +52,9 @@ public class OrdemServicoController {
 
     @PostMapping
     public ResponseEntity<Resposta<OrdemServico>> save(@RequestBody OrdemServico OrdemServico) {
-        Agenda agenda = OrdemServico.getAgenda();
+        Agenda agenda = agendaService.findById(OrdemServico.getAgenda().getId()).get();
         agenda.setStatus('F');
-        // Fazer o salvamento da agenda pelo serviço dela
-        
-
+        this.agendaService.save(agenda);
         OrdemServico ordemServicoI = ordemServicoService.save(OrdemServico);
         Resposta<OrdemServico> resposta = new Resposta<OrdemServico>();
         if(OrdemServico == null) {
